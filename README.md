@@ -2,8 +2,8 @@
 对客户端来讲，主要增加了Metric.Point 打点方法。
 该方法有别与其他5种打点类型
 * 1：按需打点，即在代码经过的时候才会打点，而其他5种是以委托的形式注册，启动后后台线程会一直执行委托打点，写库
-*	2：相比其他5种Metric.Point 对代码入侵较少
-*	3：Metric.Point 方法有字典型Tag参数，可以记录更多信息，方便在dashbord中各种使用 group by 、where 等统计、筛选
+* 2：相比其他5种Metric.Point 对代码入侵较少
+* 3：Metric.Point 方法有字典型Tag参数，可以记录更多信息，方便在dashbord中使用各种group by 、where 等统计、筛选
 
 
 
