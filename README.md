@@ -14,6 +14,7 @@
 * 4，Metrics.Reporters.ScheduledReporter.report		字段(属性)名称改成Report，访问权限改成对外只读
 													增加Interval属性，对外开放只读，在构造函数内赋值
 * 5，Metrics.Reporters.MetricsConfig.reports	        字段(属性)名称改成MetricsReports，访问权限改成对外只读
-* 6，Metrics.Reporters.MetricsReport					增加 void WriteStore(List<PointMetricEntity> logs); 接口
+* 6，Metrics.Reporters.MetricsReport			增加 void WriteStore(List<PointMetricEntity> logs); 接口
+
 为了尽量减少对原框架的侵入，所有扩展尽量放在PointMetric文件夹下
 原框架地址：https://github.com/etishor/Metrics.NET
