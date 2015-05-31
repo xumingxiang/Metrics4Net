@@ -17,4 +17,5 @@
 * 6，Metrics.Reporters.MetricsReport			增加 void WriteStore(List<PointMetricEntity> logs); 接口
 
 为了尽量减少对原框架的侵入，所有扩展尽量放在PointMetric文件夹下
+
 原框架地址：https://github.com/etishor/Metrics.NET
