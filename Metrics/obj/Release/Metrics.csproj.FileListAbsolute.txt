@@ -1,0 +1,4 @@
+E:\WorkStudio\WebApplication5\Metrics\bin\Release\Metrics.dll
+E:\WorkStudio\WebApplication5\Metrics\bin\Release\Metrics.pdb
+E:\WorkStudio\WebApplication5\Metrics\obj\Release\Metrics.dll
+E:\WorkStudio\WebApplication5\Metrics\obj\Release\Metrics.pdb
