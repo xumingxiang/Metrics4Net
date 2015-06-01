@@ -11,8 +11,7 @@
 * 1，Metrics.Influxdb.InfluxdbReport					改成部分类(partial)，以便扩展，详见本目录下InfluxdbReport.cs文件
 * 2，Metrics.Reporters.BaseReport					    增加 public virtual void WriteStore(List<PointMetricEntity> logs) 实现方法
 * 3，Metrics.Metric									改成部分类(partial)，以便扩展，详见本目录下Metric.cs文件
-* 4，Metrics.Reporters.ScheduledReporter.report		字段(属性)名称改成Report，访问权限改成对外只读
-													增加Interval属性，对外开放只读，在构造函数内赋值
+* 4，Metrics.Reporters.ScheduledReporter.report		字段(属性)名称改成Report，访问权限改成对外只读；增加Interval属性，对外开放只读，在构造函数内赋值
 * 5，Metrics.Reporters.MetricsConfig.reports	        字段(属性)名称改成MetricsReports，访问权限改成对外只读
 * 6，Metrics.Reporters.MetricsReport			增加 void WriteStore(List<PointMetricEntity> logs); 接口
 
