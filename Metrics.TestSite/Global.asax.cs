@@ -12,7 +12,7 @@ namespace Metrics.TestSite
     {
         void Application_Start(object sender, EventArgs e)
         {
-            Metric.Config.WithReporting(report => report.WithInfluxDb("192.168.49.130", 8086, "root", "root", "metrics", TimeSpan.FromSeconds(1)));
+            Metric.Config.WithReporting(report => report.WithInfluxDb("192.168.49.130", 8086, "root", "root", "metrics", TimeSpan.FromSeconds(2)));
 
             // PointMetricConfig.SetConfig(2000, 200, 2000);//PointMetric 的配置，取消注释将覆盖默认配置，默认配置参数分别为1000,50,1000
         }

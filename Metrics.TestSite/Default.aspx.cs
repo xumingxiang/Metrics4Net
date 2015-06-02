@@ -22,16 +22,22 @@ namespace Metrics.TestSite
             Random ran = new Random();
             // int RandKey = ran.Next(100, 999);
 
-            for (int i = 0; i < 50; i++)
-            {
-                int RandKey = ran.Next(100, 150);
-                Metric.Point("Grafana_test1", RandKey, tag1);
+            //for (int i = 0; i < 25; i++)
+            //{
+              
 
-                int RandKey2 = ran.Next(50, 100);
-                Metric.Point("LogMetric4", RandKey2, tag1);
+                int RandKey= ran.Next(0, 100);
+              
 
-                Thread.Sleep(10);
-            }
+                Thread.Sleep(RandKey);
+              
+                Metric.Point("plu_test_request_count",1, tag1);
+
+
+                Metric.Point("plu_test_request_time", RandKey, tag1);
+
+               
+            //}
 
             watch.Stop();
 

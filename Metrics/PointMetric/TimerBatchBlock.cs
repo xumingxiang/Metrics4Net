@@ -57,7 +57,7 @@ namespace Metrics
         /// <param name="blockElapsed">阻塞的时间，达到该时间间隔，也会出队.单位：毫秒</param>
         public TimerBatchBlock(int taskNum, Action<List<T>> action, int queueMaxLength, int batchSize, int blockElapsed)
         {
-            if (queueMaxLength < batchSize) 
+            if (queueMaxLength < batchSize)
             {
                 throw new ArgumentException("batchSize必须是不大于queueMaxLength的int型整数", "batchSize");
             }
@@ -128,7 +128,7 @@ namespace Metrics
                         this.LastActionTime = DateTime.Now;
                     }
                 }
-                catch (ThreadAbortException)
+                catch (ThreadAbortException tae)
                 {
                     Thread.ResetAbort();
                     //do exception...

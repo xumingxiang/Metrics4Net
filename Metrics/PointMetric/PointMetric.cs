@@ -1,12 +1,10 @@
-﻿using System;
+﻿using Metrics.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metrics.Utils;
-using System.Web;
 using System.Net;
 using System.Net.Sockets;
+using System.Web;
 
 namespace Metrics
 {
@@ -36,7 +34,6 @@ namespace Metrics
         public static void Point(string name, double value, Dictionary<string, string> tags = null)
         {
             var _tags = new Dictionary<string, string>();
-            _tags.Add("client_ip", GetClientIP());
             _tags.Add("server_ip", ServerIP);
 
             if (tags != null && tags.Count > 0)
@@ -52,30 +49,6 @@ namespace Metrics
             logMetricEntity.Tags = _tags;
             logMetricEntity.TimeStamp = DateTime.Now.ToUnixTime();
             block.Enqueue(logMetricEntity);
-        }
-
-        /// <summary>
-        /// 获取客户端IP
-        /// </summary>
-        /// <returns></returns>
-        private static string GetClientIP()
-        {
-            string str = string.Empty;
-            if (HttpContext.Current != null)
-            {
-                IPAddress address;
-                str = HttpContext.Current.Request.Headers["X-Forwarded-For"];
-                if (string.IsNullOrWhiteSpace(str))
-                {
-                    return HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
-                }
-                str = str.Trim().Split(new char[] { ',' })[0];
-                if (IPAddress.TryParse(str, out address))
-                {
-                    str = string.Empty;
-                }
-            }
-            return str;
         }
 
         private static string serverIP;

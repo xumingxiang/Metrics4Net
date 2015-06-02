@@ -8,6 +8,9 @@ namespace Metrics
 {
     public static class PointMetricConfig
     {
+        const int Default_QueueMaxLength = 2000;
+        const int Default_BatchSize = 100;
+
         private static int queueMaxLength;
         /// <summary>
         /// 队列最大长度
@@ -16,7 +19,7 @@ namespace Metrics
         {
             get
             {
-                return queueMaxLength <= 0 ? 1000 : queueMaxLength;
+                return queueMaxLength <= 0 ? Default_QueueMaxLength : queueMaxLength;
             }
             private set
             {
@@ -32,7 +35,7 @@ namespace Metrics
         {
             get
             {
-                return batchSize <= 0 ? 50 : batchSize;
+                return batchSize <= 0 ? Default_BatchSize : batchSize;
             }
             private set
             {
