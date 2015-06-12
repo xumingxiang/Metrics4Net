@@ -1,0 +1,9 @@
+E:\WorkStudio\Metrics4Net\Metrics.TestSite\bin\Metrics.TestSite.dll
+E:\WorkStudio\Metrics4Net\Metrics.TestSite\bin\Metrics.TestSite.pdb
+E:\WorkStudio\Metrics4Net\Metrics.TestSite\bin\Metrics.dll
+E:\WorkStudio\Metrics4Net\Metrics.TestSite\bin\Microsoft.Web.Infrastructure.dll
+E:\WorkStudio\Metrics4Net\Metrics.TestSite\bin\Metrics.pdb
+E:\WorkStudio\Metrics4Net\Metrics.TestSite\bin\Microsoft.Web.Infrastructure.xml
+E:\WorkStudio\Metrics4Net\Metrics.TestSite\obj\Debug\Metrics.TestSite.csprojResolveAssemblyReference.cache
+E:\WorkStudio\Metrics4Net\Metrics.TestSite\obj\Debug\Metrics.TestSite.dll
+E:\WorkStudio\Metrics4Net\Metrics.TestSite\obj\Debug\Metrics.TestSite.pdb

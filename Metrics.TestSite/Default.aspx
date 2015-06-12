@@ -16,7 +16,7 @@
     <script type="text/javascript">
         window.setInterval(function () {
             window.history.go(0);
-        }, Math.random() * 1000);
+        }, Math.random() * 800);
 
     </script>
 </body>
