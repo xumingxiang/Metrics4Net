@@ -1,5 +1,4 @@
-﻿
-namespace Metrics
+﻿namespace Metrics
 {
     public enum TimeUnit
     {

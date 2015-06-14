@@ -24,12 +24,15 @@ namespace Metrics.Sampling
         }
 
         public long Count { get { return this.count; } }
+
         public int Size { get { return this.values.Length; } }
 
         public long Max { get { return this.values.LastOrDefault(); } }
+
         public long Min { get { return this.values.FirstOrDefault(); } }
 
         public string MaxUserValue { get { return this.maxUserValue; } }
+
         public string MinUserValue { get { return this.minUserValue; } }
 
         public double Mean { get { return Size == 0 ? 0.0 : this.values.Average(); } }
@@ -50,10 +53,15 @@ namespace Metrics.Sampling
         }
 
         public double Median { get { return GetValue(0.5d); } }
+
         public double Percentile75 { get { return GetValue(0.75d); } }
+
         public double Percentile95 { get { return GetValue(0.95d); } }
+
         public double Percentile98 { get { return GetValue(0.98d); } }
+
         public double Percentile99 { get { return GetValue(0.99d); } }
+
         public double Percentile999 { get { return GetValue(0.999d); } }
 
         public IEnumerable<long> Values { get { return this.values.AsEnumerable(); } }

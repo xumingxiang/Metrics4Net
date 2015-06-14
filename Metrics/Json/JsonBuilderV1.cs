@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using Metrics.MetricData;
+using Metrics.Utils;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using Metrics.MetricData;
-using Metrics.Utils;
 
 namespace Metrics.Json
 {
@@ -20,7 +20,10 @@ namespace Metrics.Json
         private readonly List<JsonProperty> root = new List<JsonProperty>();
         private readonly List<JsonProperty> units = new List<JsonProperty>();
 
-        public static string BuildJson(MetricsData data) { return BuildJson(data, Clock.Default, indented: DefaultIndented); }
+        public static string BuildJson(MetricsData data)
+        {
+            return BuildJson(data, Clock.Default, indented: DefaultIndented);
+        }
 
         public static string BuildJson(MetricsData data, Clock clock, bool indented = DefaultIndented)
         {
@@ -101,11 +104,11 @@ namespace Metrics.Json
         public JsonBuilderV1 AddObject(IEnumerable<TimerValueSource> timers)
         {
             var properties = timers.Select(t => new { Name = t.Name, Value = t.Value, RateUnit = t.RateUnit, DurationUnit = t.DurationUnit })
-                .Select(t => new JsonProperty(t.Name, new[] 
+                .Select(t => new JsonProperty(t.Name, new[]
                 {
                     new JsonProperty("ActiveSessions", t.Value.ActiveSessions),
-                    new JsonProperty("Rate", Meter(t.Value.Rate)), 
-                    new JsonProperty("Histogram", Histogram(t.Value.Histogram)) 
+                    new JsonProperty("Rate", Meter(t.Value.Rate)),
+                    new JsonProperty("Histogram", Histogram(t.Value.Histogram))
                 }));
 
             root.Add(new JsonProperty("Timers", properties));

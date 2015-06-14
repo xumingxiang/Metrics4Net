@@ -40,6 +40,7 @@ namespace Metrics.MetricData
         }
 
         public TimeUnit RateUnit { get; private set; }
+
         public TimeUnit DurationUnit { get; private set; }
     }
 }

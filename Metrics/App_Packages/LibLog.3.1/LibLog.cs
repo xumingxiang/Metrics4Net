@@ -32,9 +32,9 @@
 
 namespace Metrics.Logging
 {
-    using System.Collections.Generic;
     using Metrics.Logging.LogProviders;
     using System;
+    using System.Collections.Generic;
     using System.Diagnostics;
 
     /// <summary>
@@ -53,7 +53,7 @@ namespace Metrics.Logging
         /// <remarks>
         /// Note to implementers: the message func should not be called if the loglevel is not enabled
         /// so as not to incur performance penalties.
-        /// 
+        ///
         /// To check IsEnabled call Log with only LogLevel and check the return value, no event will be written.
         /// </remarks>
         bool Log(LogLevel logLevel, Func<string> messageFunc, Exception exception = null, params object[] formatParameters);
@@ -139,7 +139,6 @@ namespace Metrics.Logging
                 logger.Log(LogLevel.Debug, message.AsFunc(), exception);
             }
         }
-
 
         public static void DebugException(this ILog logger, string message, Exception exception, params object[] formatParams)
         {
@@ -356,6 +355,7 @@ namespace Metrics.Logging
     public static class LogProvider
     {
         private static ILogProvider _currentLogProvider;
+
         private const string NullLogProvider = "Current Log Provider is not set. Call SetCurrentLogProvider " +
                                                "with a non-null value first.";
 
@@ -370,6 +370,7 @@ namespace Metrics.Logging
         }
 
 #if !LIBLOG_PORTABLE
+
         /// <summary>
         /// Gets a logger for the current class.
         /// </summary>
@@ -379,6 +380,7 @@ namespace Metrics.Logging
             var stackFrame = new StackFrame(1, false);
             return GetLogger(stackFrame.GetMethod().DeclaringType);
         }
+
 #endif
 
         /// <summary>
@@ -531,6 +533,7 @@ namespace Metrics.Logging.LogProviders
     internal abstract class LogProviderBase : ILogProvider
     {
         protected delegate IDisposable OpenNdc(string message);
+
         protected delegate IDisposable OpenMdc(string key, string value);
 
         private readonly Lazy<OpenNdc> _lazyOpenNdcMethod;
@@ -679,6 +682,7 @@ namespace Metrics.Logging.LogProviders
                             return true;
                         }
                         break;
+
                     case LogLevel.Info:
                         if (_logger.IsInfoEnabled)
                         {
@@ -686,6 +690,7 @@ namespace Metrics.Logging.LogProviders
                             return true;
                         }
                         break;
+
                     case LogLevel.Warn:
                         if (_logger.IsWarnEnabled)
                         {
@@ -693,6 +698,7 @@ namespace Metrics.Logging.LogProviders
                             return true;
                         }
                         break;
+
                     case LogLevel.Error:
                         if (_logger.IsErrorEnabled)
                         {
@@ -700,6 +706,7 @@ namespace Metrics.Logging.LogProviders
                             return true;
                         }
                         break;
+
                     case LogLevel.Fatal:
                         if (_logger.IsFatalEnabled)
                         {
@@ -707,6 +714,7 @@ namespace Metrics.Logging.LogProviders
                             return true;
                         }
                         break;
+
                     default:
                         if (_logger.IsTraceEnabled)
                         {
@@ -729,6 +737,7 @@ namespace Metrics.Logging.LogProviders
                             return true;
                         }
                         break;
+
                     case LogLevel.Info:
                         if (_logger.IsInfoEnabled)
                         {
@@ -736,6 +745,7 @@ namespace Metrics.Logging.LogProviders
                             return true;
                         }
                         break;
+
                     case LogLevel.Warn:
                         if (_logger.IsWarnEnabled)
                         {
@@ -743,6 +753,7 @@ namespace Metrics.Logging.LogProviders
                             return true;
                         }
                         break;
+
                     case LogLevel.Error:
                         if (_logger.IsErrorEnabled)
                         {
@@ -750,6 +761,7 @@ namespace Metrics.Logging.LogProviders
                             return true;
                         }
                         break;
+
                     case LogLevel.Fatal:
                         if (_logger.IsFatalEnabled)
                         {
@@ -757,6 +769,7 @@ namespace Metrics.Logging.LogProviders
                             return true;
                         }
                         break;
+
                     default:
                         if (_logger.IsTraceEnabled)
                         {
@@ -774,14 +787,19 @@ namespace Metrics.Logging.LogProviders
                 {
                     case LogLevel.Debug:
                         return _logger.IsDebugEnabled;
+
                     case LogLevel.Info:
                         return _logger.IsInfoEnabled;
+
                     case LogLevel.Warn:
                         return _logger.IsWarnEnabled;
+
                     case LogLevel.Error:
                         return _logger.IsErrorEnabled;
+
                     case LogLevel.Fatal:
                         return _logger.IsFatalEnabled;
+
                     default:
                         return _logger.IsTraceEnabled;
                 }
@@ -901,6 +919,7 @@ namespace Metrics.Logging.LogProviders
                             return true;
                         }
                         break;
+
                     case LogLevel.Warn:
                         if (_logger.IsWarnEnabled)
                         {
@@ -908,6 +927,7 @@ namespace Metrics.Logging.LogProviders
                             return true;
                         }
                         break;
+
                     case LogLevel.Error:
                         if (_logger.IsErrorEnabled)
                         {
@@ -915,6 +935,7 @@ namespace Metrics.Logging.LogProviders
                             return true;
                         }
                         break;
+
                     case LogLevel.Fatal:
                         if (_logger.IsFatalEnabled)
                         {
@@ -922,6 +943,7 @@ namespace Metrics.Logging.LogProviders
                             return true;
                         }
                         break;
+
                     default:
                         if (_logger.IsDebugEnabled)
                         {
@@ -944,6 +966,7 @@ namespace Metrics.Logging.LogProviders
                             return true;
                         }
                         break;
+
                     case LogLevel.Warn:
                         if (_logger.IsWarnEnabled)
                         {
@@ -951,6 +974,7 @@ namespace Metrics.Logging.LogProviders
                             return true;
                         }
                         break;
+
                     case LogLevel.Error:
                         if (_logger.IsErrorEnabled)
                         {
@@ -958,6 +982,7 @@ namespace Metrics.Logging.LogProviders
                             return true;
                         }
                         break;
+
                     case LogLevel.Fatal:
                         if (_logger.IsFatalEnabled)
                         {
@@ -965,6 +990,7 @@ namespace Metrics.Logging.LogProviders
                             return true;
                         }
                         break;
+
                     default:
                         if (_logger.IsDebugEnabled)
                         {
@@ -982,14 +1008,19 @@ namespace Metrics.Logging.LogProviders
                 {
                     case LogLevel.Debug:
                         return _logger.IsDebugEnabled;
+
                     case LogLevel.Info:
                         return _logger.IsInfoEnabled;
+
                     case LogLevel.Warn:
                         return _logger.IsWarnEnabled;
+
                     case LogLevel.Error:
                         return _logger.IsErrorEnabled;
+
                     case LogLevel.Fatal:
                         return _logger.IsFatalEnabled;
+
                     default:
                         return _logger.IsDebugEnabled;
                 }
@@ -1132,7 +1163,6 @@ namespace Metrics.Logging.LogProviders
                     return _shouldLog(_loggerName, severity);
                 }
 
-
                 messageFunc = LogMessageFormatter.SimulateStructuredLogging(messageFunc, formatParameters);
                 if (exception != null)
                 {
@@ -1156,12 +1186,16 @@ namespace Metrics.Logging.LogProviders
                 {
                     case LogLevel.Fatal:
                         return TraceEventTypeValues.Critical;
+
                     case LogLevel.Error:
                         return TraceEventTypeValues.Error;
+
                     case LogLevel.Warn:
                         return TraceEventTypeValues.Warning;
+
                     case LogLevel.Info:
                         return TraceEventTypeValues.Information;
+
                     default:
                         return TraceEventTypeValues.Verbose;
                 }
@@ -1250,7 +1284,7 @@ namespace Metrics.Logging.LogProviders
             ParameterExpression destructureObjectsParam = Expression.Parameter(typeof(bool), "destructureObjects");
             MethodCallExpression methodCall = Expression.Call(null, method, new Expression[]
             {
-                propertyNameParam, 
+                propertyNameParam,
                 valueParam,
                 destructureObjectsParam
             });
@@ -1316,7 +1350,7 @@ namespace Metrics.Logging.LogProviders
                 MethodInfo writeExceptionMethodInfo = loggerType.GetMethodPortable("Write", new[]
                 {
                     logEventTypeType,
-                    typeof(Exception), 
+                    typeof(Exception),
                     typeof(string),
                     typeof(object[])
                 });
@@ -1362,6 +1396,7 @@ namespace Metrics.Logging.LogProviders
                             return true;
                         }
                         break;
+
                     case LogLevel.Info:
                         if (IsEnabled(_logger, InformationLevel))
                         {
@@ -1369,6 +1404,7 @@ namespace Metrics.Logging.LogProviders
                             return true;
                         }
                         break;
+
                     case LogLevel.Warn:
                         if (IsEnabled(_logger, WarningLevel))
                         {
@@ -1376,6 +1412,7 @@ namespace Metrics.Logging.LogProviders
                             return true;
                         }
                         break;
+
                     case LogLevel.Error:
                         if (IsEnabled(_logger, ErrorLevel))
                         {
@@ -1383,6 +1420,7 @@ namespace Metrics.Logging.LogProviders
                             return true;
                         }
                         break;
+
                     case LogLevel.Fatal:
                         if (IsEnabled(_logger, FatalLevel))
                         {
@@ -1390,6 +1428,7 @@ namespace Metrics.Logging.LogProviders
                             return true;
                         }
                         break;
+
                     default:
                         if (IsEnabled(_logger, VerboseLevel))
                         {
@@ -1412,6 +1451,7 @@ namespace Metrics.Logging.LogProviders
                             return true;
                         }
                         break;
+
                     case LogLevel.Info:
                         if (IsEnabled(_logger, InformationLevel))
                         {
@@ -1419,6 +1459,7 @@ namespace Metrics.Logging.LogProviders
                             return true;
                         }
                         break;
+
                     case LogLevel.Warn:
                         if (IsEnabled(_logger, WarningLevel))
                         {
@@ -1426,6 +1467,7 @@ namespace Metrics.Logging.LogProviders
                             return true;
                         }
                         break;
+
                     case LogLevel.Error:
                         if (IsEnabled(_logger, ErrorLevel))
                         {
@@ -1433,6 +1475,7 @@ namespace Metrics.Logging.LogProviders
                             return true;
                         }
                         break;
+
                     case LogLevel.Fatal:
                         if (IsEnabled(_logger, FatalLevel))
                         {
@@ -1440,6 +1483,7 @@ namespace Metrics.Logging.LogProviders
                             return true;
                         }
                         break;
+
                     default:
                         if (IsEnabled(_logger, VerboseLevel))
                         {
@@ -1522,7 +1566,7 @@ namespace Metrics.Logging.LogProviders
                 "Write",
                 new[]
                 {
-                    logMessageSeverityType, typeof(string), typeof(int), typeof(Exception), typeof(bool), 
+                    logMessageSeverityType, typeof(string), typeof(int), typeof(Exception), typeof(bool),
                     logWriteModeType, typeof(string), typeof(string), typeof(string), typeof(string), typeof(object[])
                 });
 
@@ -1567,16 +1611,22 @@ namespace Metrics.Logging.LogProviders
                 {
                     case LogLevel.Trace:
                         return TraceEventTypeValues.Verbose;
+
                     case LogLevel.Debug:
                         return TraceEventTypeValues.Verbose;
+
                     case LogLevel.Info:
                         return TraceEventTypeValues.Information;
+
                     case LogLevel.Warn:
                         return TraceEventTypeValues.Warning;
+
                     case LogLevel.Error:
                         return TraceEventTypeValues.Error;
+
                     case LogLevel.Fatal:
                         return TraceEventTypeValues.Critical;
+
                     default:
                         throw new ArgumentOutOfRangeException("logLevel");
                 }
@@ -1817,9 +1867,9 @@ namespace Metrics.Logging.LogProviders
 
         /// <summary>
         /// Some logging frameworks support structured logging, such as serilog. This will allow you to add names to structured data in a format string:
-        /// For example: Log("Log message to {user}", user). This only works with serilog, but as the user of LibLog, you don't know if serilog is actually 
-        /// used. So, this class simulates that. it will replace any text in {curlybraces} with an index number. 
-        /// 
+        /// For example: Log("Log message to {user}", user). This only works with serilog, but as the user of LibLog, you don't know if serilog is actually
+        /// used. So, this class simulates that. it will replace any text in {curlybraces} with an index number.
+        ///
         /// "Log {message} to {user}" would turn into => "Log {0} to {1}". Then the format parameters are handled using regular .net string.Format.
         /// </summary>
         /// <param name="messageBuilder">The message builder.</param>
@@ -1909,10 +1959,12 @@ namespace Metrics.Logging.LogProviders
 #endif
 
 #if !LIBLOG_PORTABLE
+
         internal static object CreateDelegate(this MethodInfo methodInfo, Type delegateType)
         {
             return Delegate.CreateDelegate(delegateType, methodInfo);
         }
+
 #endif
 
         internal static Assembly GetAssemblyPortable(this Type type)

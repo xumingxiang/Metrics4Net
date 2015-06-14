@@ -11,7 +11,7 @@ namespace Metrics.Utils
             var count = Enum.GetValues(typeof(TimeUnit)).Length;
 
             var matrix = new long[count, count];
-            var timingFactors = new[] 
+            var timingFactors = new[]
             {
                 1000L,  // Nanoseconds to microseconds
                 1000L,  // Microseconds to milliseconds
@@ -129,6 +129,5 @@ namespace Metrics.Utils
                     throw new ArgumentOutOfRangeException("unit");
             }
         }
-
     }
 }

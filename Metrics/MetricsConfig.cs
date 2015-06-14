@@ -1,10 +1,9 @@
-﻿
+﻿using Metrics.Logging;
+using Metrics.Reports;
+using Metrics.Visualization;
 using System;
 using System.Configuration;
 using System.Threading;
-using Metrics.Logging;
-using Metrics.Reports;
-using Metrics.Visualization;
 
 namespace Metrics
 {
@@ -15,7 +14,7 @@ namespace Metrics
         public static readonly bool GlobalyDisabledMetrics = ReadGlobalyDisableMetricsSetting();
 
         private readonly MetricsContext context;
-        
+
         //private readonly MetricsReports reports;
         public readonly MetricsReports MetricsReports;//TODO:对外开放可读 by xmx
 
@@ -83,7 +82,6 @@ namespace Metrics
                             MetricsErrorHandler.Handle(x,
                                 string.Format("Unable to start HTTP Listener. Retried {0} times, giving up...", MaxRetries));
                         }
-
                     }
                 } while (retries > 0);
             }

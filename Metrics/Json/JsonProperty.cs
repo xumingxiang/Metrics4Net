@@ -43,6 +43,7 @@ namespace Metrics.Json
         }
 
         public string Name { get; private set; }
+
         public JsonValue Value { get; private set; }
 
         public string AsJson(bool indented, int indent)

@@ -1,8 +1,7 @@
-﻿
-using System;
+﻿using System;
+
 namespace Metrics.MetricData
 {
-
     public struct CounterValue
     {
         public struct SetItem

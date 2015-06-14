@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Metrics.Core;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using Metrics.Core;
 
 namespace Metrics
 {
@@ -52,7 +52,7 @@ namespace Metrics
         }
 
         /// <summary>
-        /// Registers an action to monitor. If the action throws the health check fails, 
+        /// Registers an action to monitor. If the action throws the health check fails,
         /// otherwise is successful and the returned string is used as status message.
         /// </summary>
         /// <param name="name">Name of the health check.</param>
@@ -99,6 +99,5 @@ namespace Metrics
         {
             checks.Clear();
         }
-
     }
 }

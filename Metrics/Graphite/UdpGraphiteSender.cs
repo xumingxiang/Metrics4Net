@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Metrics.Logging;
+using Metrics.Utils;
+using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using Metrics.Logging;
-using Metrics.Utils;
 
 namespace Metrics.Graphite
 {
@@ -43,7 +43,7 @@ namespace Metrics.Graphite
         }
 
         public override void Flush()
-        { 
+        {
         }
 
         private static UdpClient InitClient(string host, int port)

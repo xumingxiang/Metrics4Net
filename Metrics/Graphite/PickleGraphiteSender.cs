@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Metrics.Logging;
+using Metrics.Utils;
+using System;
 using System.Net;
 using System.Net.Sockets;
-using Metrics.Logging;
-using Metrics.Utils;
 
 namespace Metrics.Graphite
 {
@@ -19,7 +19,6 @@ namespace Metrics.Graphite
 
         private TcpClient client;
         private PickleJar jar = new PickleJar();
-
 
         public PickleGraphiteSender(string host, int port, int batchSize = DefaultPickleJarSize)
         {
@@ -87,7 +86,6 @@ namespace Metrics.Graphite
             log.Debug(() => "Picked client for graphite initialized for " + host + ":" + port.ToString());
             return client;
         }
-
 
         protected override void Dispose(bool disposing)
         {

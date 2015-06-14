@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的常规信息通过下列特性集
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("Metrics.TestSite")]
+[assembly: AssemblyTitle("Metrics.WebApi")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Metrics.TestSite")]
+[assembly: AssemblyProduct("Metrics.WebApi")]
 [assembly: AssemblyCopyright("版权所有(C)  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("785f5d77-02cd-405f-b850-a0fdcb37b838")]
+[assembly: Guid("5a5c1a3b-bbcf-4f90-a73d-2b3b6a6b935a")]
 
 // 程序集的版本信息由下列四个值组成:
 //

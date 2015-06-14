@@ -1,6 +1,6 @@
-﻿using System;
-using Metrics.Graphite;
+﻿using Metrics.Graphite;
 using Metrics.Reports;
+using System;
 
 namespace Metrics
 {

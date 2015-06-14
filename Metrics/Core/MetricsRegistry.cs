@@ -1,15 +1,19 @@
-﻿
+﻿using Metrics.MetricData;
 using System;
 using System.Collections.Generic;
-using Metrics.MetricData;
+
 namespace Metrics.Core
 {
     public interface RegistryDataProvider
     {
         IEnumerable<GaugeValueSource> Gauges { get; }
+
         IEnumerable<CounterValueSource> Counters { get; }
+
         IEnumerable<MeterValueSource> Meters { get; }
+
         IEnumerable<HistogramValueSource> Histograms { get; }
+
         IEnumerable<TimerValueSource> Timers { get; }
     }
 
@@ -32,6 +36,7 @@ namespace Metrics.Core
             where T : TimerImplementation;
 
         void ClearAllMetrics();
+
         void ResetMetricsValues();
     }
 }

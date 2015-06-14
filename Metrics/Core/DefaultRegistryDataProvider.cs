@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Metrics.MetricData;
+using System;
 using System.Collections.Generic;
-using Metrics.MetricData;
 
 namespace Metrics.Core
 {
@@ -27,9 +27,13 @@ namespace Metrics.Core
         }
 
         public IEnumerable<GaugeValueSource> Gauges { get { return this.gauges(); } }
+
         public IEnumerable<CounterValueSource> Counters { get { return this.counters(); } }
+
         public IEnumerable<MeterValueSource> Meters { get { return this.meters(); } }
+
         public IEnumerable<HistogramValueSource> Histograms { get { return this.histograms(); } }
+
         public IEnumerable<TimerValueSource> Timers { get { return this.timers(); } }
     }
 }

@@ -7,10 +7,10 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace Metrics.TestSite {
+namespace Metrics.WebApi {
     
     
-    public partial class Default {
+    public partial class Test {
         
         /// <summary>
         /// form1 控件。

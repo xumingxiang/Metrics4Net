@@ -1,5 +1,4 @@
-﻿
-namespace Metrics
+﻿namespace Metrics
 {
     /// <summary>
     /// A Histogram measures the distribution of values in a stream of data: e.g., the number of results returned by a search.

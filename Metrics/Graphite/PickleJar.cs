@@ -1,8 +1,8 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+
 namespace Metrics.Graphite
 {
     public sealed class PickleJar
@@ -21,7 +21,9 @@ namespace Metrics.Graphite
         private class Pickle
         {
             public string Name { get; set; }
+
             public string Value { get; set; }
+
             public string Timestamp { get; set; }
         }
 

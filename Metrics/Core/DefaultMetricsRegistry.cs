@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Metrics.MetricData;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using Metrics.MetricData;
 
 namespace Metrics.Core
 {
@@ -20,7 +20,9 @@ namespace Metrics.Core
                 }
 
                 public string Name { get { return this.Value.Name; } }
+
                 public TMetric Metric { get; private set; }
+
                 public TValue Value { get; private set; }
             }
 
@@ -70,8 +72,10 @@ namespace Metrics.Core
         private readonly MetricMetaCatalog<MetricValueProvider<double>, GaugeValueSource, double> gauges = new MetricMetaCatalog<MetricValueProvider<double>, GaugeValueSource, double>();
         private readonly MetricMetaCatalog<Counter, CounterValueSource, CounterValue> counters = new MetricMetaCatalog<Counter, CounterValueSource, CounterValue>();
         private readonly MetricMetaCatalog<Meter, MeterValueSource, MeterValue> meters = new MetricMetaCatalog<Meter, MeterValueSource, MeterValue>();
+
         private readonly MetricMetaCatalog<Histogram, HistogramValueSource, HistogramValue> histograms =
             new MetricMetaCatalog<Histogram, HistogramValueSource, HistogramValue>();
+
         private readonly MetricMetaCatalog<Timer, TimerValueSource, TimerValue> timers = new MetricMetaCatalog<Timer, TimerValueSource, TimerValue>();
 
         public DefaultMetricsRegistry()

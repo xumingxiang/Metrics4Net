@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Globalization;
-using Metrics.MetricData;
+﻿using Metrics.MetricData;
 using Metrics.Utils;
+using System.Collections.Generic;
+using System.Globalization;
 
 namespace Metrics.Json
 {
@@ -15,6 +15,7 @@ namespace Metrics.Json
 #else
         private const bool DefaultIndented = true;
 #endif
+
         public static string BuildJson(MetricsData data)
         {
             return BuildJson(data, AppEnvironment.Current, Clock.Default, indented: DefaultIndented);

@@ -1,7 +1,7 @@
-﻿
+﻿using Metrics.Utils;
 using System;
 using System.Linq;
-using Metrics.Utils;
+
 namespace Metrics.Sampling
 {
     public sealed class UniformReservoir : Reservoir

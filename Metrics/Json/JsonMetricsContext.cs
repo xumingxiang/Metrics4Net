@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Metrics.MetricData;
+using Metrics.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Metrics.MetricData;
-using Metrics.Utils;
 
 namespace Metrics.Json
 {
@@ -17,6 +17,7 @@ namespace Metrics.Json
         private JsonMetricsContext[] childContexts = new JsonMetricsContext[0];
 
         public string Version { get; set; }
+
         public DateTime Timestamp { get; set; }
 
         public Dictionary<string, string> Environment { get { return this.environment; } set { this.environment = value ?? new Dictionary<string, string>(); } }
@@ -24,10 +25,15 @@ namespace Metrics.Json
         public string Context { get; set; }
 
         public JsonGauge[] Gauges { get { return this.gauges; } set { this.gauges = value ?? new JsonGauge[0]; } }
+
         public JsonCounter[] Counters { get { return this.counters; } set { this.counters = value ?? new JsonCounter[0]; } }
+
         public JsonMeter[] Meters { get { return this.meters; } set { this.meters = value ?? new JsonMeter[0]; } }
+
         public JsonHistogram[] Histograms { get { return this.histograms; } set { this.histograms = value ?? new JsonHistogram[0]; } }
+
         public JsonTimer[] Timers { get { return this.timers; } set { this.timers = value ?? new JsonTimer[0]; } }
+
         public JsonMetricsContext[] ChildContexts { get { return this.childContexts; } set { this.childContexts = value ?? new JsonMetricsContext[0]; } }
 
         public static JsonMetricsContext FromContext(MetricsData contextData)
@@ -128,4 +134,3 @@ namespace Metrics.Json
         }
     }
 }
-

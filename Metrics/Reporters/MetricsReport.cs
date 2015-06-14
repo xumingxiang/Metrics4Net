@@ -1,16 +1,13 @@
-﻿using System;
-using System.Threading;
-using Metrics.MetricData;
+﻿using Metrics.MetricData;
+using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace Metrics.Reporters
 {
     public partial interface MetricsReport : Utils.IHideObjectMembers
     {
         void RunReport(MetricsData metricsData, Func<HealthStatus> healthStatus, CancellationToken token);
-
-
-
 
         //<summary>
         //描述：写入存储设备

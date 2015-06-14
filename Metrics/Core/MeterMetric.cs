@@ -1,9 +1,9 @@
-﻿
+﻿using Metrics.MetricData;
+using Metrics.Utils;
 using System;
 using System.Collections.Concurrent;
 using System.Linq;
-using Metrics.MetricData;
-using Metrics.Utils;
+
 namespace Metrics.Core
 {
     public interface MeterImplementation : Meter, MetricValueProvider<MeterValue> { }
@@ -58,10 +58,11 @@ namespace Metrics.Core
             }
 
             private double FifteenMinuteRate { get { return this.m15Rate.GetRate(TimeUnit.Seconds); } }
+
             private double FiveMinuteRate { get { return this.m5Rate.GetRate(TimeUnit.Seconds); } }
+
             private double OneMinuteRate { get { return this.m1Rate.GetRate(TimeUnit.Seconds); } }
         }
-
 
         private readonly ConcurrentDictionary<string, MeterWrapper> setMeters = new ConcurrentDictionary<string, MeterWrapper>();
 

@@ -1,10 +1,9 @@
-﻿
+﻿using Metrics.Core;
+using Metrics.Logging;
 using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Security.Principal;
-using Metrics.Core;
-using Metrics.Logging;
 
 namespace Metrics.PerfCounters
 {

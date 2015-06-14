@@ -1,7 +1,7 @@
-﻿
+﻿using Metrics.MetricData;
 using System.Collections.Generic;
 using System.Linq;
-using Metrics.MetricData;
+
 namespace Metrics.Json
 {
     public class JsonCounter : JsonMetric
@@ -9,13 +9,16 @@ namespace Metrics.Json
         public class SetItem
         {
             public string Item { get; set; }
+
             public long Count { get; set; }
+
             public double Percent { get; set; }
         }
 
         private SetItem[] items = new SetItem[0];
 
         public long Count { get; set; }
+
         public SetItem[] Items { get { return this.items; } set { this.items = value ?? new SetItem[0]; } }
 
         public static JsonCounter FromCounter(MetricValueSource<CounterValue> counter)

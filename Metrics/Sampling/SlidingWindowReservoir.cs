@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Metrics.Utils;
+using System;
 using System.Linq;
-using Metrics.Utils;
 
 namespace Metrics.Sampling
 {
@@ -32,6 +32,7 @@ namespace Metrics.Sampling
         }
 
         public long Count { get { return this.count.Value; } }
+
         public int Size { get { return Math.Min((int)this.count.Value, values.Length); } }
 
         public Snapshot GetSnapshot(bool resetReservoir = false)

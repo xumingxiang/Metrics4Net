@@ -1,5 +1,5 @@
-﻿using System;
-using Metrics.MetricData;
+﻿using Metrics.MetricData;
+using System;
 
 namespace Metrics.Core
 {
@@ -11,15 +11,51 @@ namespace Metrics.Core
         public abstract MetricsDataProvider DataProvider { get; }
 
         public AdvancedMetricsContext Advanced { get { throw new ReadOnlyMetricsContextException(); } }
-        public MetricsContext Context(string contextName) { throw new ReadOnlyMetricsContextException(); }
-        public MetricsContext Context(string contextName, Func<string, MetricsContext> contextCreator) { throw new ReadOnlyMetricsContextException(); }
-        public void ShutdownContext(string contextName) { throw new ReadOnlyMetricsContextException(); }
-        public void Gauge(string name, Func<double> valueProvider, Unit unit, MetricTags tags) { throw new ReadOnlyMetricsContextException(); }
-        public void PerformanceCounter(string name, string counterCategory, string counterName, string counterInstance, Unit unit, MetricTags tags) { throw new ReadOnlyMetricsContextException(); }
-        public Counter Counter(string name, Unit unit, MetricTags tags) { throw new ReadOnlyMetricsContextException(); }
-        public Meter Meter(string name, Unit unit, TimeUnit rateUnit, MetricTags tags) { throw new ReadOnlyMetricsContextException(); }
-        public Histogram Histogram(string name, Unit unit, SamplingType samplingType, MetricTags tags) { throw new ReadOnlyMetricsContextException(); }
-        public Timer Timer(string name, Unit unit, SamplingType samplingType, TimeUnit rateUnit, TimeUnit durationUnit, MetricTags tags) { throw new ReadOnlyMetricsContextException(); }
+
+        public MetricsContext Context(string contextName)
+        {
+            throw new ReadOnlyMetricsContextException();
+        }
+
+        public MetricsContext Context(string contextName, Func<string, MetricsContext> contextCreator)
+        {
+            throw new ReadOnlyMetricsContextException();
+        }
+
+        public void ShutdownContext(string contextName)
+        {
+            throw new ReadOnlyMetricsContextException();
+        }
+
+        public void Gauge(string name, Func<double> valueProvider, Unit unit, MetricTags tags)
+        {
+            throw new ReadOnlyMetricsContextException();
+        }
+
+        public void PerformanceCounter(string name, string counterCategory, string counterName, string counterInstance, Unit unit, MetricTags tags)
+        {
+            throw new ReadOnlyMetricsContextException();
+        }
+
+        public Counter Counter(string name, Unit unit, MetricTags tags)
+        {
+            throw new ReadOnlyMetricsContextException();
+        }
+
+        public Meter Meter(string name, Unit unit, TimeUnit rateUnit, MetricTags tags)
+        {
+            throw new ReadOnlyMetricsContextException();
+        }
+
+        public Histogram Histogram(string name, Unit unit, SamplingType samplingType, MetricTags tags)
+        {
+            throw new ReadOnlyMetricsContextException();
+        }
+
+        public Timer Timer(string name, Unit unit, SamplingType samplingType, TimeUnit rateUnit, TimeUnit durationUnit, MetricTags tags)
+        {
+            throw new ReadOnlyMetricsContextException();
+        }
 
         public void Dispose()
         {

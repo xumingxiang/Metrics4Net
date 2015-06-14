@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Metrics.MetricData;
+using Metrics.Sampling;
+using System;
 using System.Collections.Concurrent;
 using System.Linq;
-using Metrics.MetricData;
-using Metrics.Sampling;
 
 namespace Metrics.Core
 {
@@ -27,6 +27,7 @@ namespace Metrics.Core
         public AdvancedMetricsContext Advanced { get { return this; } }
 
         public event EventHandler ContextShuttingDown;
+
         public event EventHandler ContextDisabled;
 
         public MetricsDataProvider DataProvider { get; private set; }
@@ -220,6 +221,5 @@ namespace Metrics.Core
                 action(context);
             }
         }
-
     }
 }

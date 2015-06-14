@@ -1,5 +1,4 @@
-﻿
-namespace Metrics.MetricData
+﻿namespace Metrics.MetricData
 {
     public static class ConstantValue
     {

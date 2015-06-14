@@ -1,5 +1,6 @@
-﻿using System;
-using Metrics.MetricData;
+﻿using Metrics.MetricData;
+using System;
+
 namespace Metrics
 {
     /// <summary>
@@ -18,7 +19,7 @@ namespace Metrics
         MetricsDataProvider DataProvider { get; }
 
         /// <summary>
-        /// Create a new child metrics context. Metrics added to the child context are kept separate from the metrics in the 
+        /// Create a new child metrics context. Metrics added to the child context are kept separate from the metrics in the
         /// parent context.
         /// </summary>
         /// <param name="contextName">Name of the child context.</param>
@@ -26,7 +27,7 @@ namespace Metrics
         MetricsContext Context(string contextName);
 
         /// <summary>
-        /// Create a new child metrics context. Metrics added to the child context are kept separate from the metrics in the 
+        /// Create a new child metrics context. Metrics added to the child context are kept separate from the metrics in the
         /// parent context.
         /// </summary>
         /// <param name="contextName">Name of the child context.</param>
@@ -70,13 +71,13 @@ namespace Metrics
         Counter Counter(string name, Unit unit, MetricTags tags = default(MetricTags));
 
         /// <summary>
-        /// A meter measures the rate at which a set of events occur, in a few different ways. 
+        /// A meter measures the rate at which a set of events occur, in a few different ways.
         /// This metric is suitable for keeping a record of now often something happens ( error, request etc ).
         /// </summary>
         /// <remarks>
-        /// The mean rate is the average rate of events. It’s generally useful for trivia, 
-        /// but as it represents the total rate for your application’s entire lifetime (e.g., the total number of requests handled, 
-        /// divided by the number of seconds the process has been running), it doesn’t offer a sense of recency. 
+        /// The mean rate is the average rate of events. It’s generally useful for trivia,
+        /// but as it represents the total rate for your application’s entire lifetime (e.g., the total number of requests handled,
+        /// divided by the number of seconds the process has been running), it doesn’t offer a sense of recency.
         /// Luckily, meters also record three different exponentially-weighted moving average rates: the 1-, 5-, and 15-minute moving averages.
         /// </remarks>
         /// <param name="name">Name of the metric. Must be unique across all meters in this context.</param>

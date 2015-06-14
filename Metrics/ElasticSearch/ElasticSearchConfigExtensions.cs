@@ -1,6 +1,6 @@
-﻿using System;
-using Metrics.ElasticSearch;
+﻿using Metrics.ElasticSearch;
 using Metrics.Reports;
+using System;
 
 namespace Metrics
 {

@@ -1,5 +1,4 @@
-﻿
-namespace Metrics.Utils
+﻿namespace Metrics.Utils
 {
     public class AtomicLongHolder
     {
@@ -20,12 +19,39 @@ namespace Metrics.Utils
 
         public long Value { get { return this.value.Value; } }
 
-        public void SetValue(long value) { this.value.SetValue(value); }
-        public long Add(long value) { return this.value.Add(value); }
-        public long Increment() { return this.value.Increment(); }
-        public long Decrement() { return this.value.Decrement(); }
-        public long GetAndReset() { return this.value.GetAndReset(); }
-        public long GetAndSet(long value) { return this.value.GetAndSet(value); }
-        public bool CompareAndSet(long expected, long updated) { return this.value.CompareAndSet(expected, updated); }
+        public void SetValue(long value)
+        {
+            this.value.SetValue(value);
+        }
+
+        public long Add(long value)
+        {
+            return this.value.Add(value);
+        }
+
+        public long Increment()
+        {
+            return this.value.Increment();
+        }
+
+        public long Decrement()
+        {
+            return this.value.Decrement();
+        }
+
+        public long GetAndReset()
+        {
+            return this.value.GetAndReset();
+        }
+
+        public long GetAndSet(long value)
+        {
+            return this.value.GetAndSet(value);
+        }
+
+        public bool CompareAndSet(long expected, long updated)
+        {
+            return this.value.CompareAndSet(expected, updated);
+        }
     }
 }

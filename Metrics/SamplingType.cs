@@ -1,5 +1,4 @@
-﻿
-namespace Metrics
+﻿namespace Metrics
 {
     public enum SamplingType
     {
@@ -8,8 +7,8 @@ namespace Metrics
         /// </summary>
         /// <remarks>
         /// A histogram with an exponentially decaying reservoir produces quantiles which are representative of (roughly) the last five minutes of data.
-        /// It does so by using a forward-decaying priority reservoir with an exponential weighting towards newer data. 
-        /// Unlike the uniform reservoir, an exponentially decaying reservoir represents recent data, allowing you to know very quickly if the distribution 
+        /// It does so by using a forward-decaying priority reservoir with an exponential weighting towards newer data.
+        /// Unlike the uniform reservoir, an exponentially decaying reservoir represents recent data, allowing you to know very quickly if the distribution
         /// of the data has changed.
         /// More information about <a href="http://metrics.codahale.com/manual/core/#man-core-histograms">Exponentially Decaying Reservoir</a>
         /// </remarks>
@@ -21,7 +20,7 @@ namespace Metrics
         /// <remarks>
         /// A histogram with a uniform reservoir produces quantiles which are valid for the entirely of the histogram’s lifetime.
         /// It will return a median value, for example, which is the median of all the values the histogram has ever been updated with.
-        /// Use a uniform histogram when you’re interested in long-term measurements. 
+        /// Use a uniform histogram when you’re interested in long-term measurements.
         /// Don’t use one where you’d want to know if the distribution of the underlying data stream has changed recently.
         /// More information about <a href="http://metrics.codahale.com/manual/core/#man-core-histograms">Exponentially Decaying Reservoir</a>
         /// </remarks>

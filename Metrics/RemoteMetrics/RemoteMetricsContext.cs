@@ -1,10 +1,10 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Metrics.Core;
+﻿using Metrics.Core;
 using Metrics.Json;
 using Metrics.MetricData;
 using Metrics.Utils;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Metrics.RemoteMetrics
 {
@@ -43,6 +43,7 @@ namespace Metrics.RemoteMetrics
         }
 
         public override MetricsDataProvider DataProvider { get { return this; } }
+
         public MetricsData CurrentMetricsData { get { return this.currentData; } }
 
         protected override void Dispose(bool disposing)

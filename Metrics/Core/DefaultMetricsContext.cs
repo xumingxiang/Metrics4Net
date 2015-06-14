@@ -1,6 +1,6 @@
-﻿
-using Metrics.Core;
+﻿using Metrics.Core;
 using Metrics.Utils;
+
 namespace Metrics
 {
     public sealed class DefaultMetricsContext : BaseMetricsContext

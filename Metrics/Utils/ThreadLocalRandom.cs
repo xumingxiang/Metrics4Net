@@ -1,6 +1,6 @@
-﻿
-using System;
+﻿using System;
 using System.Threading;
+
 namespace Metrics.Utils
 {
     public static class ThreadLocalRandom

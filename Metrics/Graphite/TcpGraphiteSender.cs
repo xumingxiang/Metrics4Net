@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Metrics.Logging;
+using Metrics.Utils;
+using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using Metrics.Logging;
-using Metrics.Utils;
 
 namespace Metrics.Graphite
 {
@@ -68,7 +68,6 @@ namespace Metrics.Graphite
             log.Debug(() => "TCP client for graphite initialized for " + host + ":" + port.ToString());
             return client;
         }
-
 
         protected override void Dispose(bool disposing)
         {

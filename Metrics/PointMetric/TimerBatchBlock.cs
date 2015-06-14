@@ -2,7 +2,6 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -17,21 +16,28 @@ namespace Metrics
         /// <summary>
         /// 当前队列长度
         /// </summary>
-        private int QueueLength { get; set; }
+        public int CurrentQueueLength { get; private set; }
+
+        /// <summary>
+        /// Queue中丢弃的数量
+        /// </summary>
+        public int Lost;
 
         private Task[] Tasks { get; set; }
 
-        private Action<List<T>> Action { get; set; }
+        /// <summary>
+        /// 打包出队的处理函数
+        /// </summary>
+        private Action<List<T>> BatchAction { get; set; }
 
         private ConcurrentQueue<T> s_Queue;
 
         /// <summary>
         /// 阻塞队列的最大长度
         /// </summary>
-        private int QueueMaxLength { get; set; }
+        public int QueueMaxLength { get; private set; }
 
-
-        private ConcurrentBag<T> Batch { get; set; }
+        public ConcurrentQueue<T> Batch { get; set; }
 
         /// <summary>
         /// 元素包的大小
@@ -41,11 +47,9 @@ namespace Metrics
         /// <summary>
         /// 上一次打包处理的时间
         /// </summary>
-        DateTime LastActionTime { get; set; }
+        private DateTime LastActionTime { get; set; }
 
-
-        int BlockElapsed { get; set; }
-
+        private int BlockElapsed { get; set; }
 
         /// <summary>
         /// 多线程消费队列
@@ -67,11 +71,11 @@ namespace Metrics
                 throw new ArgumentException("blockElapsed必须是大于0的int型整数", "blockElapsed");
             }
             s_Queue = new ConcurrentQueue<T>();
-            Batch = new ConcurrentBag<T>();
+            Batch = new ConcurrentQueue<T>();
             this.LastActionTime = DateTime.Now;
             this.BatchSize = batchSize;
             this.BlockElapsed = blockElapsed;
-            this.Action = action;
+            this.BatchAction = action;
             this.QueueMaxLength = queueMaxLength;
             this.Tasks = new Task[taskNum];
             for (int i = 0; i < taskNum; i++)
@@ -88,14 +92,18 @@ namespace Metrics
         public void Enqueue(T item)
         {
             int queueLen = s_Queue.Count;
+            this.CurrentQueueLength = queueLen;
             if (queueLen >= this.QueueMaxLength)
             {
+                //大于最大长度，扔掉
                 for (int i = 0; i < (queueLen - this.QueueMaxLength) + 1; i++)
                 {
                     T removedItem;
                     this.s_Queue.TryDequeue(out removedItem);
+                    Interlocked.Increment(ref Lost);
                 }
             }
+
             this.s_Queue.Enqueue(item);
         }
 
@@ -112,7 +120,7 @@ namespace Metrics
                     bool hasItem = s_Queue.TryDequeue(out item);
                     if (hasItem)
                     {
-                        this.Batch.Add(item);
+                        this.Batch.Enqueue(item);
                     }
                     else
                     {
@@ -121,12 +129,39 @@ namespace Metrics
 
                     var _now = DateTime.Now;
                     var elapsed = (_now - this.LastActionTime).TotalMilliseconds;
-                    if (this.Batch.Count > 0 && (this.Batch.Count >= this.BatchSize || elapsed > this.BlockElapsed))
+
+                    int _batchSize = 0;
+                    bool execBatchAction = false;
+                    if (this.Batch.Count >= this.BatchSize)
                     {
-                        this.Action(this.Batch.ToList());
-                        this.Batch = new ConcurrentBag<T>();
-                        this.LastActionTime = DateTime.Now;
+                        _batchSize = this.BatchSize;
+                        execBatchAction = true;
                     }
+                    else if (this.Batch.Count > 0 && (elapsed > this.BlockElapsed))
+                    {
+                        _batchSize = this.Batch.Count;
+                        execBatchAction = true;
+                    }
+                    if (execBatchAction)
+                    {
+                        this.BatchAction(this.Batch.ToList());
+                        this.LastActionTime = DateTime.Now;
+
+                        for (int i = 0; i < _batchSize; i++)
+                        {
+                            T batchItem;
+                            this.Batch.TryDequeue(out batchItem);
+                        }
+                    }
+
+                    //var _now = DateTime.Now;
+                    //var elapsed = (_now - this.LastActionTime).TotalMilliseconds;
+                    //if (this.Batch.Count > 0 && (this.Batch.Count >= this.BatchSize || elapsed > this.BlockElapsed))
+                    //{
+                    //    this.BatchAction(this.Batch.ToList());
+                    //    this.Batch = new ConcurrentBag<T>();
+                    //    this.LastActionTime = DateTime.Now;
+                    //}
                 }
                 catch (ThreadAbortException tae)
                 {

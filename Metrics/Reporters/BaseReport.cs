@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Metrics.MetricData;
+using Metrics.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using Metrics.MetricData;
-using Metrics.Utils;
 
 namespace Metrics.Reporters
 {
@@ -51,22 +51,47 @@ namespace Metrics.Reporters
         }
 
         protected DateTime ReportTimestamp { get; private set; }
+
         protected DateTime CurrentContextTimestamp { get; private set; }
 
-        protected virtual void StartReport(string contextName) { }
-        protected virtual void StartContext(string contextName) { }
-        protected virtual void StartMetricGroup(string metricName) { }
-        protected virtual void EndMetricGroup(string metricName) { }
-        protected virtual void EndContext(string contextName) { }
-        protected virtual void EndReport(string contextName) { }
+        protected virtual void StartReport(string contextName)
+        {
+        }
 
-        protected virtual void ReportEnvironment(string name, IEnumerable<EnvironmentEntry> environment) { }
+        protected virtual void StartContext(string contextName)
+        {
+        }
+
+        protected virtual void StartMetricGroup(string metricName)
+        {
+        }
+
+        protected virtual void EndMetricGroup(string metricName)
+        {
+        }
+
+        protected virtual void EndContext(string contextName)
+        {
+        }
+
+        protected virtual void EndReport(string contextName)
+        {
+        }
+
+        protected virtual void ReportEnvironment(string name, IEnumerable<EnvironmentEntry> environment)
+        {
+        }
 
         protected abstract void ReportGauge(string name, double value, Unit unit, MetricTags tags);
+
         protected abstract void ReportCounter(string name, CounterValue value, Unit unit, MetricTags tags);
+
         protected abstract void ReportMeter(string name, MeterValue value, Unit unit, TimeUnit rateUnit, MetricTags tags);
+
         protected abstract void ReportHistogram(string name, HistogramValue value, Unit unit, MetricTags tags);
+
         protected abstract void ReportTimer(string name, TimerValue value, Unit unit, TimeUnit rateUnit, TimeUnit durationUnit, MetricTags tags);
+
         protected abstract void ReportHealth(HealthStatus status);
 
         protected virtual string FormatContextName(IEnumerable<string> contextStack, string contextName)
@@ -117,7 +142,5 @@ namespace Metrics.Reporters
             StartMetricGroup("Health Checks");
             ReportHealth(status);
         }
-
-        
     }
 }

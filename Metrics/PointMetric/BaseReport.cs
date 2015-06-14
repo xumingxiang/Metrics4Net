@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Metrics.Reporters
 {
@@ -18,7 +14,6 @@ namespace Metrics.Reporters
         //</summary>
         public virtual void WriteStore(List<PointMetricEntity> logs)
         {
-
         }
     }
 }

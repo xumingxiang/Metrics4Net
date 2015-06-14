@@ -1,6 +1,6 @@
-﻿
+﻿using Metrics.Utils;
 using System;
-using Metrics.Utils;
+
 namespace Metrics
 {
     public struct Unit : IHideObjectMembers

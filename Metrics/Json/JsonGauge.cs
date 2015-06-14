@@ -1,6 +1,5 @@
-﻿
+﻿using Metrics.MetricData;
 using System.Collections.Generic;
-using Metrics.MetricData;
 
 namespace Metrics.Json
 {

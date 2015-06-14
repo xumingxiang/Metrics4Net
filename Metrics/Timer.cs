@@ -73,7 +73,7 @@ namespace Metrics
     }
 
     /// <summary>
-    /// Disposable instance used to measure time. 
+    /// Disposable instance used to measure time.
     /// </summary>
     public interface TimerContext : IDisposable
     {

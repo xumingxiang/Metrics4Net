@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Metrics.MetricData;
+using System;
 using System.Text;
 using System.Threading;
-using Metrics.MetricData;
 
 namespace Metrics.Reporters
 {
@@ -21,6 +21,7 @@ namespace Metrics.Reporters
             this.buffer = new StringBuilder();
             base.StartReport(contextName);
         }
+
         protected override void WriteLine(string line, params string[] args)
         {
             this.buffer.AppendLine(string.Format(line, args));

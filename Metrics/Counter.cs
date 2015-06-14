@@ -1,5 +1,4 @@
-﻿
-namespace Metrics
+﻿namespace Metrics
 {
     /// <summary>
     /// A counter is a simple incrementing and decrementing 64-bit integer.

@@ -10,9 +10,9 @@ namespace Metrics
 {
     internal sealed class PointMetric
     {
-        static TimerBatchBlock<PointMetricEntity> block;
+        private static TimerBatchBlock<PointMetricEntity> block;
 
-        const int taskNum = 1;
+        private const int taskNum = 1;
 
         static PointMetric()
         {
@@ -33,6 +33,14 @@ namespace Metrics
 
         public static void Point(string name, double value, Dictionary<string, string> tags = null)
         {
+            PrivatePoint(name, value, tags);
+            PrivatePoint("metric_point_lost", block.Lost);
+            PrivatePoint("metric_point_current_quene_length", block.CurrentQueueLength);
+            PrivatePoint("metric_point_current_batch_length", block.Batch.Count);
+        }
+
+        private static void PrivatePoint(string name, double value, Dictionary<string, string> tags = null)
+        {
             var _tags = new Dictionary<string, string>();
             _tags.Add("server_ip", ServerIP);
 
@@ -52,6 +60,7 @@ namespace Metrics
         }
 
         private static string serverIP;
+
         private static string ServerIP
         {
             get
@@ -63,6 +72,7 @@ namespace Metrics
                 return serverIP;
             }
         }
+
         /// <summary>
         /// 获取服务器IP
         /// </summary>

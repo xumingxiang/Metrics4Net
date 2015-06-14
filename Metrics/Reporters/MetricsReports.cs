@@ -1,8 +1,8 @@
-﻿
+﻿using Metrics.MetricData;
+using Metrics.Reporters;
 using System;
 using System.Collections.Generic;
-using Metrics.MetricData;
-using Metrics.Reporters;
+
 namespace Metrics.Reports
 {
     public sealed class MetricsReports : Utils.IHideObjectMembers, IDisposable
@@ -11,7 +11,7 @@ namespace Metrics.Reports
         private readonly Func<HealthStatus> healthStatus;
 
         public readonly List<ScheduledReporter> ScheduledReporters = new List<ScheduledReporter>(); //TODO:对外开放可读 by xmx
-     
+
         public MetricsReports(MetricsDataProvider metricsDataProvider, Func<HealthStatus> healthStatus)
         {
             this.metricsDataProvider = metricsDataProvider;

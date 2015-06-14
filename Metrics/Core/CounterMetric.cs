@@ -1,7 +1,7 @@
-﻿using System.Collections.Concurrent;
-using System.Linq;
-using Metrics.MetricData;
+﻿using Metrics.MetricData;
 using Metrics.Utils;
+using System.Collections.Concurrent;
+using System.Linq;
 
 namespace Metrics.Core
 {

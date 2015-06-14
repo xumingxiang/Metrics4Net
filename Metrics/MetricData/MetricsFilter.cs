@@ -1,6 +1,6 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
+
 namespace Metrics.MetricData
 {
     public enum MetricType
@@ -17,9 +17,13 @@ namespace Metrics.MetricData
         bool IsMatch(string context);
 
         bool IsMatch(GaugeValueSource gauge);
+
         bool IsMatch(CounterValueSource counter);
+
         bool IsMatch(MeterValueSource meter);
+
         bool IsMatch(HistogramValueSource histogram);
+
         bool IsMatch(TimerValueSource timer);
     }
 
@@ -31,17 +35,42 @@ namespace Metrics.MetricData
 
         private class NoOpFilter : MetricsFilter
         {
-            public bool IsMatch(string context) { return true; }
-            public bool IsMatch(GaugeValueSource gauge) { return true; }
-            public bool IsMatch(CounterValueSource counter) { return true; }
-            public bool IsMatch(MeterValueSource meter) { return true; }
-            public bool IsMatch(HistogramValueSource histogram) { return true; }
-            public bool IsMatch(TimerValueSource timer) { return true; }
+            public bool IsMatch(string context)
+            {
+                return true;
+            }
+
+            public bool IsMatch(GaugeValueSource gauge)
+            {
+                return true;
+            }
+
+            public bool IsMatch(CounterValueSource counter)
+            {
+                return true;
+            }
+
+            public bool IsMatch(MeterValueSource meter)
+            {
+                return true;
+            }
+
+            public bool IsMatch(HistogramValueSource histogram)
+            {
+                return true;
+            }
+
+            public bool IsMatch(TimerValueSource timer)
+            {
+                return true;
+            }
         }
 
         public static MetricsFilter All = new NoOpFilter();
 
-        private Filter() { }
+        private Filter()
+        {
+        }
 
         public static Filter New()
         {

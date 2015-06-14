@@ -1,7 +1,7 @@
-﻿using System;
-using Metrics.MetricData;
+﻿using Metrics.MetricData;
 using Metrics.Sampling;
 using Metrics.Utils;
+using System;
 
 namespace Metrics.Core
 {

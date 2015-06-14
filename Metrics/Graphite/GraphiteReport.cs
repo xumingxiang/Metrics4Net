@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Metrics.MetricData;
+using Metrics.Reporters;
+using Metrics.Utils;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Metrics.MetricData;
-using Metrics.Reporters;
-using Metrics.Utils;
 
 namespace Metrics.Graphite
 {
@@ -144,7 +144,6 @@ namespace Metrics.Graphite
             return string.Concat(context, ".", GraphiteName(metric.Name));
         }
 
-
         protected virtual string AsRate(Unit unit, TimeUnit rateUnit)
         {
             return string.Concat(unit.Name, "-per-", rateUnit.Unit());
@@ -164,7 +163,6 @@ namespace Metrics.Graphite
         {
             return Name(string.Concat(cleanName, "-", GraphiteName(itemSuffix)), unit);
         }
-
 
         protected virtual string Name(string cleanName, Unit unit)
         {
@@ -200,8 +198,8 @@ namespace Metrics.Graphite
         protected virtual string GraphiteName(string name, bool allowDots = false)
         {
             var noSlash = slash.Replace(name, "-per-");
-            return allowDots ? 
-                invalidAllowDots.Replace(noSlash, "_").Trim('_') : 
+            return allowDots ?
+                invalidAllowDots.Replace(noSlash, "_").Trim('_') :
                 invalid.Replace(noSlash, "_").Trim('_');
         }
 
@@ -220,4 +218,3 @@ namespace Metrics.Graphite
         }
     }
 }
-

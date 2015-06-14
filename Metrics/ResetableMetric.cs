@@ -1,5 +1,4 @@
-﻿
-namespace Metrics
+﻿namespace Metrics
 {
     /// <summary>
     /// Indicates a metric's ability to be reset. Reseting a metric clear all currently collected data.

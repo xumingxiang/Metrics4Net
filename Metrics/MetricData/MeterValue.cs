@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Metrics.Utils;
+using System;
 using System.Linq;
-using Metrics.Utils;
 
 namespace Metrics.MetricData
 {

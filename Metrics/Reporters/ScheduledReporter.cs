@@ -1,7 +1,7 @@
-﻿using System;
-using System.Threading;
-using Metrics.MetricData;
+﻿using Metrics.MetricData;
 using Metrics.Utils;
+using System;
+using System.Threading;
 
 namespace Metrics.Reporters
 {
@@ -11,7 +11,9 @@ namespace Metrics.Reporters
         public readonly MetricsReport Report;//TODO:对外开放可读 by xmx
         private readonly MetricsDataProvider metricsDataProvider;
         private readonly Func<HealthStatus> healthStatus;
+
         public TimeSpan Interval { get; private set; }//TODO:将循环时间对外开发 by 徐明祥 20150531
+
         public ScheduledReporter(MetricsReport reporter, MetricsDataProvider metricsDataProvider, Func<HealthStatus> healthStatus, TimeSpan interval)
             : this(reporter, metricsDataProvider, healthStatus, interval, new ActionScheduler()) { }
 

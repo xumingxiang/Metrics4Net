@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+</head>
+<body>
+    <script src="Scripts/Metric.js"></script>
+
+    <script type="text/javascript">
+
+      
+        window.setInterval(function () {
+            metric.point("webapi_metrics_point_test", 1, { "tag1": "tag1_val", "tag2": "tag2_val" });
+        }, Math.random() * 1000);
+    </script>
+
+</body>
+</html>

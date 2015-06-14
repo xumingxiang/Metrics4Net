@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Metrics.Utils;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using Metrics.Utils;
 
 namespace Metrics.Json
 {
@@ -12,7 +12,11 @@ namespace Metrics.Json
 
         private readonly List<JsonProperty> root = new List<JsonProperty>();
 
-        public static string BuildJson(HealthStatus status) { return BuildJson(status, Clock.Default, indented: false); }
+        public static string BuildJson(HealthStatus status)
+        {
+            return BuildJson(status, Clock.Default, indented: false);
+        }
+
         public static string BuildJson(HealthStatus status, Clock clock, bool indented = true)
         {
             return new JsonHealthChecks()

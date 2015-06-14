@@ -1,5 +1,5 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+
 namespace Metrics.Sampling
 {
     public sealed class UserValueWrapper

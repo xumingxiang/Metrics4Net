@@ -1,8 +1,8 @@
-﻿
+﻿using Metrics.MetricData;
+using Metrics.Utils;
 using System.Collections.Generic;
 using System.Linq;
-using Metrics.MetricData;
-using Metrics.Utils;
+
 namespace Metrics.Reporters
 {
     public class CSVReport : BaseReport
@@ -25,6 +25,7 @@ namespace Metrics.Reporters
             }
 
             public string Name { get; private set; }
+
             public string FormattedValue { get; private set; }
         }
 
@@ -66,7 +67,7 @@ namespace Metrics.Reporters
 
         protected override void ReportHealth(HealthStatus status)
         {
-            Write("All", "HealthChecks", new[] { 
+            Write("All", "HealthChecks", new[] {
                 new Value("All Healthy", status.IsHealthy) }.Union(
                 status.Results.SelectMany(r => new[]
             {

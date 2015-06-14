@@ -1,8 +1,8 @@
-﻿
+﻿using Metrics.MetricData;
+using Metrics.Utils;
 using System.Collections.Generic;
 using System.Linq;
-using Metrics.MetricData;
-using Metrics.Utils;
+
 namespace Metrics.Json
 {
     public class JsonMeter : JsonMetric
@@ -10,22 +10,34 @@ namespace Metrics.Json
         public class SetItem
         {
             public string Item { get; set; }
+
             public long Count { get; set; }
+
             public double MeanRate { get; set; }
+
             public double OneMinuteRate { get; set; }
+
             public double FiveMinuteRate { get; set; }
+
             public double FifteenMinuteRate { get; set; }
+
             public double Percent { get; set; }
         }
 
         private SetItem[] items = new SetItem[0];
 
         public long Count { get; set; }
+
         public double MeanRate { get; set; }
+
         public double OneMinuteRate { get; set; }
+
         public double FiveMinuteRate { get; set; }
+
         public double FifteenMinuteRate { get; set; }
+
         public string RateUnit { get; set; }
+
         public SetItem[] Items { get { return this.items; } set { this.items = value ?? new SetItem[0]; } }
 
         public static JsonMeter FromMeter(MeterValueSource meter)
