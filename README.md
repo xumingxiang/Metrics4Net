@@ -41,10 +41,10 @@ https://github.com/xumingxiang/Metrics4Net/wiki/%E4%BD%BF%E7%94%A8Metrics4Net-In
   Metric.Point("plu_test_request_count", 1, tag1);
 ```
   
-  # WebApi调用
+# WebApi调用
   /Api/Point.ashx
   
-  # JS调用
+# JS调用
 ```
   <script src="Scripts/Metric.js"></script>
   <script type="text/javascript">
