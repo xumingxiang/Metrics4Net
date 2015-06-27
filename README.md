@@ -42,7 +42,14 @@ https://github.com/xumingxiang/Metrics4Net/wiki/%E4%BD%BF%E7%94%A8Metrics4Net-In
 ```
   
 # WebApi调用
-  /Api/Point.ashx
+```
+post:
+/Api/Point.ashx
+FormData: 
+name:webapi_metrics_point_test
+value:99.02877185959369
+tags:tag1=bbb&tag2=tag2_val
+```
   
 # JS调用
 ```
