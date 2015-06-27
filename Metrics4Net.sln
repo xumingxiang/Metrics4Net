@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metrics", "Metrics\Metrics.csproj", "{8BBF3D02-A968-4EEB-94EA-426BBC722F39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metrics.WebApi", "Metrics.WebApi\Metrics.WebApi.csproj", "{45A172A0-4733-415C-A13E-196B3CCD0EB5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metrics.Web", "Metrics.Web\Metrics.Web.csproj", "{45A172A0-4733-415C-A13E-196B3CCD0EB5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

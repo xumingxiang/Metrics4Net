@@ -31,12 +31,27 @@ namespace Metrics
              }, PointMetricConfig.QueueMaxLength, PointMetricConfig.BatchSize, blockElapsed);
         }
 
+
         public static void Point(string name, double value, Dictionary<string, string> tags = null)
         {
             PrivatePoint(name, value, tags);
-            PrivatePoint("metric_point_lost", block.Lost);
-            PrivatePoint("metric_point_current_quene_length", block.CurrentQueueLength);
-            PrivatePoint("metric_point_current_batch_length", block.Batch.Count);
+            SysPoint();
+        }
+
+        static DateTime lastSysPointTime = DateTime.Now;
+        const int SYS_POINT_ELAPSED = 1;//系统Point打点时间间隔，单位：秒
+        /// <summary>
+        /// 系统打点，记录Point自身信息
+        /// </summary>
+        private static void SysPoint()
+        {
+            if ((DateTime.Now - lastSysPointTime).TotalSeconds >= SYS_POINT_ELAPSED)
+            {
+                PrivatePoint("metric_point_lost", block.Lost);
+                PrivatePoint("metric_point_current_quene_length", block.CurrentQueueLength);
+                PrivatePoint("metric_point_current_batch_length", block.Batch.Count);
+                lastSysPointTime = DateTime.Now;
+            }
         }
 
         private static void PrivatePoint(string name, double value, Dictionary<string, string> tags = null)
