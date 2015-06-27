@@ -23,7 +23,7 @@
 https://github.com/xumingxiang/Metrics4Net/wiki/%E4%BD%BF%E7%94%A8Metrics4Net-InfluxDb-grafana-%E6%9E%84%E5%BB%BA%E6%8C%87%E6%A0%87%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F
 
 # C#应用程序调用示例
-'''
+```
  public class Global : System.Web.HttpApplication
     {
         protected void Application_Start(object sender, EventArgs e)
@@ -39,17 +39,16 @@ https://github.com/xumingxiang/Metrics4Net/wiki/%E4%BD%BF%E7%94%A8Metrics4Net-In
   Dictionary<string, string> tag1 = new Dictionary<string, string>();
   tag1.Add("tag1", "bbb");
   Metric.Point("plu_test_request_count", 1, tag1);
-  
-  '''
+```
   
   # WebApi调用
   /Api/Point.ashx
   
   # JS调用
-  '''
+```
   <script src="Scripts/Metric.js"></script>
   <script type="text/javascript">
     metric.point("webapi_metrics_point_test", 123, { "tag1": "bbb", "tag2": "tag2_val" });
   </script>
-  '''
+```
 
