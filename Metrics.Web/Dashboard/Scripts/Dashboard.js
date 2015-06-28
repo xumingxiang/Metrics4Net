@@ -21,11 +21,6 @@ Date.prototype.Format = function (fmt, utc) { //author: meizz
     return fmt;
 }
 
-
-
-
-
-
 $(function () {
 
     var host = "http://192.168.49.132:8086";
@@ -249,9 +244,6 @@ $(function () {
         }
     });
 
-    $("#group_by_tag").bind("keyup", function () {
-        var query_str = host + '/db/' + db + '/series?u=' + u + '&p=' + p + '&q=';
-    });
 
     $("#btn_query").click(function () {
         query();
