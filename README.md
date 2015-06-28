@@ -17,7 +17,6 @@
 
 为了尽量减少对原框架的侵入，所有扩展尽量放在PointMetric文件夹下
 
-原框架地址：https://github.com/etishor/Metrics.NET
 
 # 使用Metrics4Net InfluxDb grafana 构建指标监控系统
 https://github.com/xumingxiang/Metrics4Net/wiki/%E4%BD%BF%E7%94%A8Metrics4Net-InfluxDb-grafana-%E6%9E%84%E5%BB%BA%E6%8C%87%E6%A0%87%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F
