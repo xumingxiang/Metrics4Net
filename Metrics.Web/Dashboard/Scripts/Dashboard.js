@@ -4,15 +4,16 @@
 // 例子： 
 // (new Date()).Format("yyyy-MM-dd hh:mm:ss.S") ==> 2006-07-02 08:09:04.423 
 // (new Date()).Format("yyyy-M-d h:m:s.S")      ==> 2006-7-2 8:9:4.18 
-Date.prototype.Format = function (fmt) { //author: meizz 
+Date.prototype.Format = function (fmt, utc) { //author: meizz 
     var o = {
-        "M+": this.getMonth() + 1, //月份 
-        "d+": this.getDate(), //日 
-        "h+": this.getHours(), //小时 
-        "m+": this.getMinutes(), //分 
-        "s+": this.getSeconds(), //秒 
-        "q+": Math.floor((this.getMonth() + 3) / 3), //季度 
-        "S": this.getMilliseconds() //毫秒 
+
+        "M+": (utc ? this.getUTCMonth() : this.getMonth()) + 1, //月份 
+        "d+": (utc ? this.getUTCDate() : this.getDate()), //日 
+        "h+": (utc ? this.getUTCHours() : this.getHours()), //小时 
+        "m+": (utc ? this.getUTCMinutes() : this.getMinutes()), //分 
+        "s+": (utc ? this.getUTCSeconds() : this.getSeconds()), //秒 
+        "q+": Math.floor(((utc ? this.getUTCMonth() : this.getMonth()) + 3) / 3), //季度 
+        "S": utc ? this.getUTCMilliseconds() : this.getMilliseconds() //毫秒 
     };
     if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
     for (var k in o)
@@ -38,8 +39,14 @@ $(function () {
         var group_by_time = $("#group_by_time").val() || "1m";
         var aggr = $("#aggr").val();
         var group_by_tag = $("#group_by_tag").val();
-        var start_time = $("#start_time").val();
-        var end_time = $("#end_time").val() || new Date().Format("yyyy-MM-dd hh:mm:ss");
+
+        var start_time_str = $("#start_time").val();
+        var start_time = new Date(start_time_str);
+        var utc_start_time_fm = start_time.Format("yyyy-MM-dd hh:mm:ss", true);
+
+        var end_time_str = $("#end_time").val() || new Date().Format("yyyy-MM-dd hh:mm:ss");
+        var end_time = new Date(end_time_str);
+        var utc_end_time_fm = end_time.Format("yyyy-MM-dd hh:mm:ss", true);
 
         if (!metric_name || metric_name == "") {
             alert("Metric Name 不能为空");
@@ -56,14 +63,14 @@ $(function () {
             text: '正在努力的读取数据中...',    //loading话术
         });
 
-      
+
 
         var query_str = query_base + 'select ' + aggr + '( value )' + ' from ' + metric_name + ' where ';
         if (start_time != "") {
-            query_str += ' time > \'' + start_time + '\' and ';
+            query_str += ' time > \'' + utc_start_time_fm + '\' and ';
         }
 
-        query_str += ' time < \'' + end_time + '\' ';
+        query_str += ' time < \'' + utc_end_time_fm + '\' ';
         query_str += ' group%20by%20';
         if (group_by_tag != "") {
             query_str += group_by_tag + '%20%2C';
@@ -167,8 +174,8 @@ $(function () {
         dateFormat: 'yy-mm-dd',
         showSecond: true,
         timeFormat: 'HH:mm:ss',
-        currentText:'当前',
-        closeText:'确定'
+        currentText: '当前',
+        closeText: '确定'
     });
 
     $("#metric_name").autocomplete({
@@ -188,7 +195,7 @@ $(function () {
     $("#group_by_tag").autocomplete({
         source: function (request, responseFn) {
             var metric_name = $("#metric_name").val();
-            if (!metric_name || metric_name == "") { return false;}
+            if (!metric_name || metric_name == "") { return false; }
             var kw = request.term;
             var query_str = query_base + 'select+*+from+%22' + metric_name + '%22+limit+1';
             $.get(query_str, function (result) {
