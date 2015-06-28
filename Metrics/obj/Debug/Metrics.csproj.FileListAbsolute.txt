@@ -1,4 +1,0 @@
-E:\WorkStudio\Metrics4Net\Metrics\bin\Debug\Metrics.dll
-E:\WorkStudio\Metrics4Net\Metrics\bin\Debug\Metrics.pdb
-E:\WorkStudio\Metrics4Net\Metrics\obj\Debug\Metrics.dll
-E:\WorkStudio\Metrics4Net\Metrics\obj\Debug\Metrics.pdb

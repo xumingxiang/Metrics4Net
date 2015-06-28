@@ -53,6 +53,11 @@ $(function () {
             return;
         }
 
+        if (end_time <= start_time) {
+            alert("结束时间不能大于开始时间");
+            return;
+        }
+
         if (!!myChart) {
             myChart.clear();
             myChart.dispose();
@@ -77,106 +82,138 @@ $(function () {
         }
         query_str += ' time(' + group_by_time + ')';
 
-        $.get(query_str, function (result) {
-            if (!result || result.length == 0) {
+        $.ajax({
+            'type': 'get',
+            'url': query_str,
+            'success': function (result) {
+                if (!result || result.length == 0) {
+                    myChart.hideLoading();
+                    $("#empty_point").text("没有相关查到数据").show();
+                    return;
+                }
+                var data = result[0];
+                var metric_name = data.name;
+                var columns = data.columns;
+                var points = data.points;
+                var points_len = points.length;
+
+                var legend = [];
+                var series = [];
+                var xAxis = [];
+                var xAxis_timestamp = [];
+                var group_index = 2;
+
+                for (var j = 0; j < points_len; j++) {
+                    var group_val = metric_name;
+                    if (columns.length > 2) {
+                        group_val = points[j][group_index];
+                        group_val = metric_name + "." + group_val;
+                    }
+
+                    if (legend.indexOf(group_val) < 0) {
+                        legend.push(group_val);
+                    }
+
+                    var timestamp = points[points_len - j - 1][0];
+                    if (xAxis_timestamp.indexOf(timestamp) < 0) {
+                        xAxis_timestamp.push(timestamp);
+                    }
+                }
+
+                $.each(xAxis_timestamp, function (index, item) {
+                    xAxis.push(new Date(item).Format("yy-MM-dd hh:mm:ss"));
+                });
+
+
+                for (var i = 0; i < legend.length; i++) {
+                    var legend_item = legend[i];
+
+                    var serie = {};
+                    serie.name = legend_item;
+                    serie.type = "line";
+                    serie.data = [];
+
+                    for (var j = points_len - 1; j >= 0; j--) {
+                        var point = points[j];
+
+                        var group_val = point[group_index];
+                        if (legend_item == metric_name || legend_item == metric_name + "." + group_val) {
+                            serie.data.push(point[1]);
+                        }
+                    }
+                    series.push(serie);
+                }
+
+                var option = {
+                    tooltip: {
+                        trigger: 'axis'
+                    },
+                    legend: {
+                        data: legend
+                    },
+                    toolbox: {
+                        show: true,
+                        feature: {
+                            mark: { show: true },
+                            dataView: { show: true, readOnly: false },
+                            magicType: { show: true, type: ['line', 'bar'] },
+                            restore: { show: true },
+                            saveAsImage: { show: true }
+                        }
+                    },
+                    calculable: true,
+                    xAxis: [
+                        {
+                            type: 'category',
+                            data: xAxis,
+                        }
+                    ],
+                    yAxis: [
+                        {
+                            type: 'value',
+                            splitArea: { show: true }
+                        }
+                    ],
+                    series: series
+                };
+
                 myChart.hideLoading();
-                $("#empty_point").show();
+                myChart.setOption(option);
+            },
+            'error': function (result) {
+                myChart.hideLoading();
+                $("#empty_point").text("Sorry，查询失败，请调整参数重试").show();
                 return;
             }
-            var data = result[0];
-            var metric_name = data.name;
-            var columns = data.columns;
-            var points = data.points;
-
-            var legend = [];
-            var series = [];
-            var xAxis = [];
-
-            var group_index = 2;
-
-            for (var j = 0; j < points.length; j++) {
-                var group_val = metric_name;
-                if (columns.length > 2) {
-                    group_val = points[j][group_index];
-                    group_val = metric_name + "." + group_val;
-                }
-
-                if (legend.indexOf(group_val) < 0) {
-                    legend.push(group_val);
-                }
-
-                var time = new Date(points[points.length - j - 1][0]).Format("yy-MM-dd hh:mm:ss");
-                if (xAxis.indexOf(time) < 0) {
-                    xAxis.push(time);
-                }
-            }
-
-
-            for (var i = 0; i < legend.length; i++) {
-                var legend_item = legend[i];
-
-                var serie = {};
-                serie.name = legend_item;
-                serie.type = "line";
-                serie.data = [];
-
-                for (var j = points.length - 1; j > 0; j--) {
-                    var point = points[j];
-
-                    var group_val = point[group_index];
-                    if (legend_item == metric_name || legend_item == metric_name + "." + group_val) {
-                        serie.data.push(point[1]);
-                    }
-                }
-                series.push(serie);
-            }
-
-            var option = {
-                tooltip: {
-                    trigger: 'axis'
-                },
-                legend: {
-                    data: legend
-                },
-                toolbox: {
-                    show: true,
-                    feature: {
-                        mark: { show: true },
-                        dataView: { show: true, readOnly: false },
-                        magicType: { show: true, type: ['line', 'bar'] },
-                        restore: { show: true },
-                        saveAsImage: { show: true }
-                    }
-                },
-                calculable: true,
-                xAxis: [
-                    {
-                        type: 'category',
-                        data: xAxis,
-                    }
-                ],
-                yAxis: [
-                    {
-                        type: 'value',
-                        splitArea: { show: true }
-                    }
-                ],
-                series: series
-            };
-
-            myChart.hideLoading();
-            myChart.setOption(option);
         });
     }
 
+    var now = new Date();
+    var default_start_time = new Date((now.setHours(now.getHours() - 1))).Format("yyyy-MM-dd hh:mm:ss");
+    var default_end_time = new Date().Format("yyyy-MM-dd hh:mm:ss");
 
-    $("#start_time,#end_time").datetimepicker({
-        dateFormat: 'yy-mm-dd',
-        showSecond: true,
-        timeFormat: 'HH:mm:ss',
-        currentText: '当前',
-        closeText: '确定'
-    });
+    $("#start_time")
+        .val(default_start_time)
+        .datetimepicker({
+            defaultValue: default_start_time,
+            dateFormat: 'yy-mm-dd',
+            showSecond: true,
+            timeFormat: 'HH:mm:ss',
+            currentText: '当前',
+            closeText: '确定'
+        });
+
+    $("#end_time")
+        .val(default_end_time)
+        .datetimepicker({
+            defaultValue: default_end_time,
+            dateFormat: 'yy-mm-dd',
+            showSecond: true,
+            timeFormat: 'HH:mm:ss',
+            currentText: '当前',
+            closeText: '确定'
+        });
+
 
     $("#metric_name").autocomplete({
         source: function (request, responseFn) {
