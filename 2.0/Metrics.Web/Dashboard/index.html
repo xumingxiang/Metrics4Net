@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metrics Dashboard</title>
+
+    <link rel="shortcut icon" href="../asset/ico/favicon.png">
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/dashboard.css" rel="stylesheet" />
+    <link href="css/jquery-ui.min.css" rel="stylesheet" />
+    <link href="css/jquery-ui-timepicker-addon.css" rel="stylesheet" />
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="echarts-2.2.4/build/dist/echarts-all.js"></script>
+</head>
+
+<body>
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation" id="head">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="javascrip:;">Metrics Dashboard</a>
+            </div>
+
+            <div class="navbar-collapse collapse" id="nav-wrap">
+                <ul class="nav navbar-nav navbar-right" id="nav" style="max-width: 100%; margin-right: 45.5px;">
+                    <li class="active"><a href="javascript:;">首页</a></li>
+                    <li class=""><a href="javascript:;">特性</a></li>
+                    <li class=""><a href="javascript:;">实例</a></li>
+                    <li class=""><a href="javascript:;">文档</a></li>
+                    <li class=""><a href="javascript:;">关于我们</a></li>
+
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </div>
+    <div class="params_warp">
+        <div id="left_params">
+            <div class="params">
+                Metric Name：&nbsp;&nbsp;<input id="metric_name" type="text" class="metric_name" />
+
+                时间间隔：<input type="text" value="1m" id="group_by_time" class="group_by_time" />
+                聚合方式：
+        <select id="aggr" class="group_by_time">
+            <option value="sum">sum</option>
+            <option value="count">count</option>
+
+            <option value="mean">avg</option>
+            <option value="max">max</option>
+            <option value="min">min</option>
+        </select>
+            </div>
+            <div class="params">
+                Group By Tag：
+        <input id="group_by_tag" type="text" />
+
+                开始时间：
+        <input id="start_time" type="text" />
+                结束时间：
+        <input id="end_time" type="text" />
+            </div>
+        </div>
+        <div id="right_params" class="params">
+            <input id="btn_query" type="button" value="查询" />
+        </div>
+    </div>
+    <div class="container featurette">
+
+        <div class="empty_point" style="display: none" id="empty_point">没有相关查到数据</div>
+
+        <div class="row">
+            <div id="graphic" class="col-md-12">
+                <div id="main" style="height: 400px; width: 100%"></div>
+            </div>
+            <!--/span-->
+        </div>
+        <!--/row-->
+    </div>
+    <!--/.fluid-container-->
+
+    <footer id="footer" >
+        <div class="container">
+            <p>© 2015 <a href="javascript:;">Plu .Net开发组</a></p>
+        </div>
+    </footer>
+    <script src="Scripts/jQuery/jquery.min.js"></script>
+    <script src="Scripts/jQuery/jquery-ui.js"></script>
+    <script src="Scripts/jQuery/jquery-ui-timepicker-addon.js"></script>
+    <script src="Scripts/Dashboard.js"></script>
+</body>
+</html>
