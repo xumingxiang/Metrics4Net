@@ -7,7 +7,7 @@
 }
 
 html {
-    background-color: rgb(6, 19, 37);
+    /*background-color: rgb(6, 19, 37);*/
 }
 
 body {
@@ -568,7 +568,7 @@ table.full {
     padding-left: 0px;
     padding-right: 0px;
     padding-top: 10px;
-    margin-left: 89.5px;
+    /*margin-left: 89.5px;*/
     float: left;
 }
 

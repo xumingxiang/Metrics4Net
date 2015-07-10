@@ -3,3 +3,8 @@ E:\WorkStudio\Metrics4Net\Metrics\bin\Debug\Metrics.pdb
 E:\WorkStudio\Metrics4Net\Metrics\obj\Debug\Metrics.csprojResolveAssemblyReference.cache
 E:\WorkStudio\Metrics4Net\Metrics\obj\Debug\Metrics.dll
 E:\WorkStudio\Metrics4Net\Metrics\obj\Debug\Metrics.pdb
+D:\WorkStudio\Metrics4Net\1.0\Metrics\bin\Debug\Metrics.dll
+D:\WorkStudio\Metrics4Net\1.0\Metrics\bin\Debug\Metrics.pdb
+D:\WorkStudio\Metrics4Net\1.0\Metrics\obj\Debug\Metrics.csprojResolveAssemblyReference.cache
+D:\WorkStudio\Metrics4Net\1.0\Metrics\obj\Debug\Metrics.dll
+D:\WorkStudio\Metrics4Net\1.0\Metrics\obj\Debug\Metrics.pdb

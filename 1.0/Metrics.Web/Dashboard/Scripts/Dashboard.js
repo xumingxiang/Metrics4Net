@@ -23,7 +23,7 @@ Date.prototype.Format = function (fmt, utc) { //author: meizz
 
 $(function () {
 
-    var host = "http://192.168.49.132:8086";
+    var host = "http://172.16.9.10:8086";
     var db = "metrics";
     var u = "root";
     var p = "root";

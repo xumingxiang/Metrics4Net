@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -46,30 +46,30 @@
             <!--/.nav-collapse -->
         </div>
     </div>
-    <div class="params_warp">
+    <div class="params_warp container">
         <div id="left_params">
             <div class="params">
                 Metric Name：&nbsp;&nbsp;<input id="metric_name" type="text" class="metric_name" />
 
                 时间间隔：<input type="text" value="1m" id="group_by_time" class="group_by_time" />
                 聚合方式：
-        <select id="aggr" class="group_by_time">
-            <option value="sum">sum</option>
-            <option value="count">count</option>
+                <select id="aggr" class="group_by_time">
+                    <option value="sum">sum</option>
+                    <option value="count">count</option>
 
-            <option value="mean">avg</option>
-            <option value="max">max</option>
-            <option value="min">min</option>
-        </select>
+                    <option value="mean">avg</option>
+                    <option value="max">max</option>
+                    <option value="min">min</option>
+                </select>
             </div>
             <div class="params">
                 Group By Tag：
-        <input id="group_by_tag" type="text" />
+                <input id="group_by_tag" type="text" />
 
                 开始时间：
-        <input id="start_time" type="text" />
+                <input id="start_time" type="text" />
                 结束时间：
-        <input id="end_time" type="text" />
+                <input id="end_time" type="text" />
             </div>
         </div>
         <div id="right_params" class="params">
@@ -90,11 +90,12 @@
     </div>
     <!--/.fluid-container-->
 
-    <footer id="footer" >
+    <!--<footer id="footer" >
         <div class="container">
-            <p>© 2015 <a href="javascript:;">Plu .Net开发组</a></p>
-        </div>
-    </footer>
+            <p>© 2015 <a href="javascript:;">Plu .Net开发组</a>
+            </p>
+        </div>-->
+    <!--</footer>-->
     <script src="Scripts/jQuery/jquery.min.js"></script>
     <script src="Scripts/jQuery/jquery-ui.js"></script>
     <script src="Scripts/jQuery/jquery-ui-timepicker-addon.js"></script>
