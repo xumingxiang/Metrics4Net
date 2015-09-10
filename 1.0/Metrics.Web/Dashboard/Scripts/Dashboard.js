@@ -80,7 +80,8 @@ $(function () {
         $.ajax({
             'type': 'get',
             'url': query_str,
-            'success': function (result) {
+            'success': function (resp) {
+                var result = eval("("+resp+")");
                 if (!result || result.length == 0) {
                     myChart.hideLoading();
                     $("#empty_point").text("没有相关查到数据").show();
@@ -214,7 +215,8 @@ $(function () {
         source: function (request, responseFn) {
             var metric_name = request.term;
             var query_str = query_base + 'list+series+%2F' + metric_name + '%2F';
-            $.get(query_str, function (result) {
+            $.get(query_str, function (resp) {
+                var result = eval("(" + resp + ")");
                 var points = result[0].points;
                 var series = $.map(points, function (item) {
                     return item[1];
@@ -230,7 +232,8 @@ $(function () {
             if (!metric_name || metric_name == "") { return false; }
             var kw = request.term;
             var query_str = query_base + 'select+*+from+%22' + metric_name + '%22+limit+1';
-            $.get(query_str, function (result) {
+            $.get(query_str, function (resp) {
+                var result = eval("(" + resp + ")");
                 var columns = result[0].columns;
                 var series = [];
                 for (var i = 3; i < columns.length; i++) {
