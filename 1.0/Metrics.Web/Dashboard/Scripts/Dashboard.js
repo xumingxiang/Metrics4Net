@@ -23,11 +23,11 @@ Date.prototype.Format = function (fmt, utc) { //author: meizz
 
 $(function () {
 
-    var host = "http://172.16.9.10:8086";
-    var db = "metrics";
-    var u = "root";
-    var p = "root";
-    var query_base = host + '/db/' + db + '/series?u=' + u + '&p=' + p + '&q=';
+    //var host = "http://172.16.9.10:8086";
+    //var db = "metrics";
+    //var u = "root";
+    //var p = "root";
+    var query_base = "/Api/Query.ashx?cmd=";
     function query() {
 
         var metric_name = $("#metric_name").val();
