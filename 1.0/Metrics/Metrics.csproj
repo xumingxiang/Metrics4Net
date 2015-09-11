@@ -153,6 +153,7 @@
     <Compile Include="Utils\Clock.cs" />
     <Compile Include="Utils\EWMA.cs" />
     <Compile Include="Utils\HostResolver.cs" />
+    <Compile Include="Utils\HttpHelper.cs" />
     <Compile Include="Utils\IHideObjectMembers.cs" />
     <Compile Include="Utils\Scheduler.cs" />
     <Compile Include="Utils\ThreadLocalRandom.cs" />

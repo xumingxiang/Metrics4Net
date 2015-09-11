@@ -20,6 +20,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <TargetFrameworkProfile />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,6 +48,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -101,6 +103,9 @@
     <Compile Include="Api\Point.ashx.cs">
       <DependentUpon>Point.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Api\Query.ashx.cs">
+      <DependentUpon>Query.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -117,6 +122,7 @@
     <Content Include="Api\Point.ashx" />
     <Content Include="Dashboard\echarts-2.2.4\build\.DS_Store" />
     <Content Include="Dashboard\echarts-2.2.4\build\dist\.DS_Store" />
+    <Content Include="Api\Query.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
