@@ -13,6 +13,7 @@ namespace Metrics.Web
         protected void Application_Start(object sender, EventArgs e)
         {
             Metric.Config.WithReporting(report => report.WithInfluxDb("172.16.9.10", 8086, "root", "root", "metrics", TimeSpan.FromSeconds(5)));
+
         }
 
         protected void Session_Start(object sender, EventArgs e)
