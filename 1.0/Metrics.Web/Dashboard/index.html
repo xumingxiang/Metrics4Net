@@ -22,7 +22,7 @@
 <body>
     <!-- Fixed navbar -->
     <div class="navbar navbar-default navbar-fixed-top" role="navigation" id="head">
-        <div class="container">
+        <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -46,43 +46,45 @@
             <!--/.nav-collapse -->
         </div>
     </div>
-    <div class="params_warp container">
-        <div id="left_params">
-            <div class="params">
-                Metric Name：&nbsp;&nbsp;<input id="metric_name" type="text" class="metric_name" />
+    <div class="params_warp container-fluid">
+        <div class="row">
+            <div id="left_params" class="col-md-9"> 
+                <div class="params">
+                    Metric Name：&nbsp;&nbsp;<input id="metric_name" type="text" class="metric_name" />
 
-                时间间隔：<input type="text" value="1m" id="group_by_time" class="group_by_time" />
-                聚合方式：
-                <select id="aggr" class="group_by_time">
-                    <option value="sum">sum</option>
-                    <option value="count">count</option>
+                    时间间隔：<input type="text" value="1m" id="group_by_time" class="group_by_time" />
+                    聚合方式：
+                    <select id="aggr" class="group_by_time">
+                        <option value="sum">sum</option>
+                        <option value="count">count</option>
 
-                    <option value="mean">avg</option>
-                    <option value="max">max</option>
-                    <option value="min">min</option>
-                </select>
+                        <option value="mean">avg</option>
+                        <option value="max">max</option>
+                        <option value="min">min</option>
+                    </select>
+                </div>
+                <div class="params">
+                    Group By Tag：
+                    <input id="group_by_tag" type="text" />
+
+                    开始时间：
+                    <input id="start_time" type="text" />
+                    结束时间：
+                    <input id="end_time" type="text" />
+                </div>
             </div>
-            <div class="params">
-                Group By Tag：
-                <input id="group_by_tag" type="text" />
-
-                开始时间：
-                <input id="start_time" type="text" />
-                结束时间：
-                <input id="end_time" type="text" />
+            <div id="right_params" class="params  col-md-3">
+                <input id="btn_query" type="button" value="查询" />
             </div>
-        </div>
-        <div id="right_params" class="params">
-            <input id="btn_query" type="button" value="查询" />
         </div>
     </div>
-    <div class="container featurette">
+    <div class="container-fluid featurette">
 
         <div class="empty_point" style="display: none" id="empty_point">没有相关查到数据</div>
 
         <div class="row">
             <div id="graphic" class="col-md-12">
-                <div id="main" style="height: 400px; width: 100%"></div>
+                <div id="main" style="min-height:450px; width: 100%"></div>
             </div>
             <!--/span-->
         </div>
