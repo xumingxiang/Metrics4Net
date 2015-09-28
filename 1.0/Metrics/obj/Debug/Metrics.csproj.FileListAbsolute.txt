@@ -1,0 +1,5 @@
+D:\WorkStudio\Metrics4Net\1.0\Metrics\bin\Debug\Metrics.dll
+D:\WorkStudio\Metrics4Net\1.0\Metrics\bin\Debug\Metrics.pdb
+D:\WorkStudio\Metrics4Net\1.0\Metrics\obj\Debug\Metrics.csprojResolveAssemblyReference.cache
+D:\WorkStudio\Metrics4Net\1.0\Metrics\obj\Debug\Metrics.dll
+D:\WorkStudio\Metrics4Net\1.0\Metrics\obj\Debug\Metrics.pdb

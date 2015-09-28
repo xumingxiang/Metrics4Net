@@ -123,6 +123,7 @@
     <Content Include="Dashboard\echarts-2.2.4\build\.DS_Store" />
     <Content Include="Dashboard\echarts-2.2.4\build\dist\.DS_Store" />
     <Content Include="Api\Query.ashx" />
+    <None Include="Properties\PublishProfiles\metric.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

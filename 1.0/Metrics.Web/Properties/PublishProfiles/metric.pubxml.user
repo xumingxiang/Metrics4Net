@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+您 Web 项目的发布/打包进程将使用此文件。您可以通过编辑此 MSBuild 文件
+来自定义该进程的行为。若要了解与此相关的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=208121。
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>D:\Publish\metric</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="Api/Point.ashx">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Api/Query.ashx">
+      <publishTime>09/11/2015 20:20:11</publishTime>
+    </File>
+    <File Include="Api/Scripts/Metric.js">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Api/WebApiTest.html">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="bin/Metrics.dll">
+      <publishTime>09/23/2015 15:59:14</publishTime>
+    </File>
+    <File Include="bin/Metrics.Web.dll">
+      <publishTime>09/23/2015 15:59:14</publishTime>
+    </File>
+    <File Include="Dashboard/css/bootstrap.min.css">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Dashboard/css/dashboard.css">
+      <publishTime>07/06/2015 18:05:26</publishTime>
+    </File>
+    <File Include="Dashboard/css/images/ui-bg_flat_0_aaaaaa_40x100.png">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Dashboard/css/images/ui-bg_flat_75_ffffff_40x100.png">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Dashboard/css/images/ui-bg_glass_55_fbf9ee_1x400.png">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Dashboard/css/images/ui-bg_glass_65_ffffff_1x400.png">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Dashboard/css/images/ui-bg_glass_75_dadada_1x400.png">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Dashboard/css/images/ui-bg_glass_75_e6e6e6_1x400.png">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Dashboard/css/images/ui-bg_glass_95_fef1ec_1x400.png">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Dashboard/css/images/ui-bg_highlight-soft_75_cccccc_1x100.png">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Dashboard/css/images/ui-icons_222222_256x240.png">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Dashboard/css/images/ui-icons_2e83ff_256x240.png">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Dashboard/css/images/ui-icons_454545_256x240.png">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Dashboard/css/images/ui-icons_888888_256x240.png">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Dashboard/css/images/ui-icons_cd0a0a_256x240.png">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Dashboard/css/jquery-ui-timepicker-addon.css">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Dashboard/css/jquery-ui.min.css">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Dashboard/echarts-2.2.4/build/.DS_Store">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Dashboard/echarts-2.2.4/build/dist/.DS_Store">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Dashboard/echarts-2.2.4/build/dist/chart/bar.js">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Dashboard/echarts-2.2.4/build/dist/chart/chord.js">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Dashboard/echarts-2.2.4/build/dist/chart/eventRiver.js">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Dashboard/echarts-2.2.4/build/dist/chart/force.js">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Dashboard/echarts-2.2.4/build/dist/chart/funnel.js">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Dashboard/echarts-2.2.4/build/dist/chart/gauge.js">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Dashboard/echarts-2.2.4/build/dist/chart/k.js">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Dashboard/echarts-2.2.4/build/dist/chart/line.js">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Dashboard/echarts-2.2.4/build/dist/chart/map.js">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Dashboard/echarts-2.2.4/build/dist/chart/pie.js">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Dashboard/echarts-2.2.4/build/dist/chart/radar.js">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Dashboard/echarts-2.2.4/build/dist/chart/scatter.js">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Dashboard/echarts-2.2.4/build/dist/chart/tree.js">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Dashboard/echarts-2.2.4/build/dist/chart/treemap.js">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Dashboard/echarts-2.2.4/build/dist/chart/venn.js">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Dashboard/echarts-2.2.4/build/dist/chart/wordCloud.js">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Dashboard/echarts-2.2.4/build/dist/echarts-all.js">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Dashboard/echarts-2.2.4/build/dist/echarts.js">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Dashboard/echarts-2.2.4/build/echarts-optimize-conf.js">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Dashboard/index.html">
+      <publishTime>07/06/2015 18:04:07</publishTime>
+    </File>
+    <File Include="Dashboard/Scripts/Dashboard.js">
+      <publishTime>09/11/2015 20:20:11</publishTime>
+    </File>
+    <File Include="Dashboard/Scripts/jQuery/jquery-ui-timepicker-addon.js">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Dashboard/Scripts/jQuery/jquery-ui.js">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Dashboard/Scripts/jQuery/jquery.min.js">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Test.aspx">
+      <publishTime>07/06/2015 17:22:38</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>09/23/2015 16:00:36</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

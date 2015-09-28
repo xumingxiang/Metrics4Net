@@ -40,7 +40,7 @@ namespace Metrics.Web.Api
                 context.Response.AddHeader("Access-Control-Allow-Origin", "*");//允许跨域请求
                // context.Response.AddHeader("Access-Control-Allow-Credentials", "true");//允许跨域操作cookie
 
-                context.Response.Write("success");
+                context.Response.Write("point success :" + context.Request.RawUrl);
             }
             catch (Exception ex)
             {

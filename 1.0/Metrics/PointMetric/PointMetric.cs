@@ -95,27 +95,22 @@ namespace Metrics
         private static string GetServerIP()
         {
             string str = "Did not get to the server IP";
-            if (HttpContext.Current != null)
-            {
-                str = HttpContext.Current.Request.ServerVariables.Get("Local_Addr");
-            }
-            else
-            {
-                try
-                {
-                    string hostName = Dns.GetHostName();
-                    var ipAddress = Dns.GetHostEntry(hostName)
-                        .AddressList
-                        .FirstOrDefault(ip => ip.AddressFamily == AddressFamily.InterNetwork);
 
-                    if (ipAddress != null)
-                    {
-                        str = ipAddress.ToString();
-                    }
-                    return string.Empty;
+            try
+            {
+                string hostName = Dns.GetHostName();
+                var ipAddress = Dns.GetHostEntry(hostName)
+                    .AddressList
+                    .FirstOrDefault(ip => ip.AddressFamily == AddressFamily.InterNetwork);
+
+                if (ipAddress != null)
+                {
+                    str = ipAddress.ToString();
                 }
-                catch (Exception) { }
+                return string.Empty;
             }
+            catch (Exception) { }
+
             return str;
         }
     }
