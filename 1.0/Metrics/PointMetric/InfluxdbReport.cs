@@ -51,7 +51,7 @@ namespace Metrics.Influxdb
             using (var client = new WebClient())
             {
                 var jsonstr = new CollectionJsonValue(data.Select(d => d.Json)).AsJson();
-                client.UploadString(this.influxdb, jsonstr);
+                client.UploadStringAsync(this.influxdb, jsonstr);
             }
         }
     }

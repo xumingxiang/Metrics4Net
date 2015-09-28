@@ -559,9 +559,7 @@ table.full {
     display: inline;
 }
 
-#right_params {
-    float: none;
-}
+
 
 .params {
     padding-bottom: 10px;
@@ -590,7 +588,8 @@ table.full {
 }
 
 #btn_query {
-    width: 100px;
+    
+    min-width: 100px;
     height: 70px;
     margin-left: 50px;
 }

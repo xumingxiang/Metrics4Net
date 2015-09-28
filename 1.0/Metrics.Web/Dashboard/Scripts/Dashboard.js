@@ -30,7 +30,7 @@ $(function () {
     var query_base = "/Api/Query.ashx?cmd=";
     function query() {
 
-        var metric_name = $("#metric_name").val();
+        var query_metric_name = $("#metric_name").val();
         var group_by_time = $("#group_by_time").val() || "1m";
         var aggr = $("#aggr").val();
         var group_by_tag = $("#group_by_tag").val();
@@ -43,15 +43,24 @@ $(function () {
         var end_time = new Date(end_time_str);
         var utc_end_time_fm = end_time.Format("yyyy-MM-dd hh:mm:ss", true);
 
-        if (!metric_name || metric_name == "") {
+        if (!query_metric_name || query_metric_name == "") {
             alert("Metric Name 不能为空");
             return;
+        }
+
+        if (group_by_tag != "") {
+            if (query_metric_name.split(',').length >= 2) {
+                alert("Group 暂时只支持单条Metric Name 查询");
+                return;
+            }
         }
 
         if (end_time <= start_time) {
             alert("结束时间不能大于开始时间");
             return;
         }
+
+       
 
         if (!!myChart) {
             myChart.clear();
@@ -65,7 +74,7 @@ $(function () {
 
 
 
-        var query_str = query_base + 'select ' + aggr + '( value )' + ' from ' + metric_name + ' where ';
+        var query_str = query_base + 'select ' + aggr + '( value )' + ' from ' + query_metric_name + ' where ';
         if (start_time != "") {
             query_str += ' time > \'' + utc_start_time_fm + '\' and ';
         }
@@ -81,63 +90,106 @@ $(function () {
             'type': 'get',
             'url': query_str,
             'success': function (resp) {
-                var result = eval("("+resp+")");
+                var result = eval("(" + resp + ")");
                 if (!result || result.length == 0) {
                     myChart.hideLoading();
                     $("#empty_point").text("没有相关查到数据").show();
                     return;
                 }
-                var data = result[0];
-                var metric_name = data.name;
-                var columns = data.columns;
-                var points = data.points;
-                var points_len = points.length;
 
                 var legend = [];
+                var legend_map = [];
                 var series = [];
                 var xAxis = [];
                 var xAxis_timestamp = [];
                 var group_index = 2;
 
-                for (var j = 0; j < points_len; j++) {
-                    var group_val = metric_name;
-                    if (columns.length > 2) {
-                        group_val = points[j][group_index];
-                        group_val = metric_name + "." + group_val;
-                    }
+                //计算legend
+                for (var i = 0; i < result.length; i++) {
+                    var columns = result[i].columns;
+                    var metric_name = result[i].name;
+                    var legend_map_item = {};
+                    legend_map_item.metric_name = metric_name;
+                    legend_map_item.legend = [];
+                    legend_map_item.data_index = i;
 
-                    if (legend.indexOf(group_val) < 0) {
-                        legend.push(group_val);
-                    }
+                    if (columns.length < 3) {
 
-                    var timestamp = points[points_len - j - 1][0];
-                    if (xAxis_timestamp.indexOf(timestamp) < 0) {
-                        xAxis_timestamp.push(timestamp);
+                        legend_map_item.legend.push(metric_name);
+                        legend.push(metric_name);
+                    } else {
+                        var points = result[i].points;
+                        for (var j = 0; j < points.length; j++) {
+                            var group_val = points[j][group_index];
+                            if (group_val != null && group_val != "") {
+                                group_val = metric_name + "." + group_val;
+                            } else {
+                                group_val = metric_name
+                            }
+                           
+                            if (legend_map_item.legend.indexOf(group_val) < 0) {
+                                legend_map_item.legend.push(group_val);
+                               
+                            }
+
+                            if (legend.indexOf(group_val) < 0) {
+                                legend.push(group_val);
+                            }
+                        }
                     }
+                    legend_map.push(legend_map_item);
                 }
 
+                //计算xAxis_timestamp、xAxis
+                for (var i = 0; i < result.length; i++) {
+                    var points = result[i].points;
+                    var points_len = points.length;
+                    for (var j = 0; j < points_len; j++) {
+                        var timestamp = points[points_len - j - 1][0];
+                        if (xAxis_timestamp.indexOf(timestamp) < 0) {
+                            xAxis_timestamp.push(timestamp);
+                        }
+                    }
+                }
                 $.each(xAxis_timestamp, function (index, item) {
                     xAxis.push(new Date(item).Format("yy-MM-dd hh:mm:ss"));
                 });
 
+                //计算series
+                for (var k = 0; k < legend_map.length; k++) {
+                    var legend_item = legend_map[k].legend;
+                    var metric_name = legend_map[k].metric_name;
+                    for (var i = 0; i < legend_item.length; i++) {
+                        var legend_item_val = legend_item[i];
 
-                for (var i = 0; i < legend.length; i++) {
-                    var legend_item = legend[i];
+                        var serie = {};
+                        serie.name = legend_item_val;
+                        serie.type = "line";
+                        serie.data = [];
+                        var points = result[legend_map[k].data_index].points;
+                        var points_len = points.length;
+                      
+                        //初始化折线点
+                        var serie_data_map = new Map();
+                        $.each(xAxis_timestamp, function (index, item) {
+                            serie_data_map.set(item, "-");
+                        });
 
-                    var serie = {};
-                    serie.name = legend_item;
-                    serie.type = "line";
-                    serie.data = [];
-
-                    for (var j = points_len - 1; j >= 0; j--) {
-                        var point = points[j];
-
-                        var group_val = point[group_index];
-                        if (legend_item == metric_name || legend_item == metric_name + "." + group_val) {
-                            serie.data.push(point[1]);
+                        for (var j = points_len - 1; j >= 0; j--) {
+                            var point = points[j];
+                            var group_val = point[group_index];
+                            if (legend_item_val == metric_name || legend_item_val == metric_name + "." + group_val) {
+                                serie_data_map.set(point[0], point[1]);
+                            }
                         }
+
+                        serie_data_map.forEach(function (i, key) {
+                            serie.data.push(serie_data_map.get(key));
+                        });
+
+                        series.push(serie);
                     }
-                    series.push(serie);
+
                 }
 
                 var option = {
@@ -151,8 +203,8 @@ $(function () {
                         show: true,
                         feature: {
                             mark: { show: true },
-                            dataView: { show: true, readOnly: false },
-                            magicType: { show: true, type: ['line', 'bar'] },
+                            dataView: { show: true, readOnly: true },
+                            magicType: { show: true, type: ['line', 'bar', 'stack', 'tiled'] },
                             restore: { show: true },
                             saveAsImage: { show: true }
                         }
@@ -175,6 +227,7 @@ $(function () {
 
                 myChart.hideLoading();
                 myChart.setOption(option);
+                window.onresize = myChart.resize;
             },
             'error': function (result) {
                 myChart.hideLoading();

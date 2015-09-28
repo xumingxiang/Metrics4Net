@@ -1,8 +1,0 @@
-D:\WorkStudio\Metrics4Net\1.0\Metrics.Web\bin\Metrics.Web.dll.config
-D:\WorkStudio\Metrics4Net\1.0\Metrics.Web\bin\Metrics.Web.dll
-D:\WorkStudio\Metrics4Net\1.0\Metrics.Web\bin\Metrics.Web.pdb
-D:\WorkStudio\Metrics4Net\1.0\Metrics.Web\bin\Metrics.dll
-D:\WorkStudio\Metrics4Net\1.0\Metrics.Web\bin\Metrics.pdb
-D:\WorkStudio\Metrics4Net\1.0\Metrics.Web\obj\Release\Metrics.Web.csprojResolveAssemblyReference.cache
-D:\WorkStudio\Metrics4Net\1.0\Metrics.Web\obj\Release\Metrics.Web.dll
-D:\WorkStudio\Metrics4Net\1.0\Metrics.Web\obj\Release\Metrics.Web.pdb
