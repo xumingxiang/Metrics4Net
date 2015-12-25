@@ -22,16 +22,16 @@
       <publishTime>07/06/2015 17:22:38</publishTime>
     </File>
     <File Include="bin/Metrics.dll">
-      <publishTime>09/23/2015 15:59:14</publishTime>
+      <publishTime>12/25/2015 14:44:24</publishTime>
     </File>
     <File Include="bin/Metrics.Web.dll">
-      <publishTime>09/23/2015 15:59:14</publishTime>
+      <publishTime>12/25/2015 14:44:24</publishTime>
     </File>
     <File Include="Dashboard/css/bootstrap.min.css">
       <publishTime>07/06/2015 17:22:38</publishTime>
     </File>
     <File Include="Dashboard/css/dashboard.css">
-      <publishTime>07/06/2015 18:05:26</publishTime>
+      <publishTime>09/28/2015 09:58:09</publishTime>
     </File>
     <File Include="Dashboard/css/images/ui-bg_flat_0_aaaaaa_40x100.png">
       <publishTime>07/06/2015 17:22:38</publishTime>
@@ -142,10 +142,10 @@
       <publishTime>07/06/2015 17:22:38</publishTime>
     </File>
     <File Include="Dashboard/index.html">
-      <publishTime>07/06/2015 18:04:07</publishTime>
+      <publishTime>09/28/2015 09:58:09</publishTime>
     </File>
     <File Include="Dashboard/Scripts/Dashboard.js">
-      <publishTime>09/11/2015 20:20:11</publishTime>
+      <publishTime>09/28/2015 09:58:09</publishTime>
     </File>
     <File Include="Dashboard/Scripts/jQuery/jquery-ui-timepicker-addon.js">
       <publishTime>07/06/2015 17:22:38</publishTime>
@@ -163,7 +163,7 @@
       <publishTime>07/06/2015 17:22:38</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>09/23/2015 16:00:36</publishTime>
+      <publishTime>12/25/2015 14:44:24</publishTime>
     </File>
   </ItemGroup>
 </Project>
