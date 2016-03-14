@@ -28,17 +28,22 @@ namespace Metrics.Utils
 
             catch (WebException web_ex)
             {
-                respStream = web_ex.Response.GetResponseStream();
-                using (System.IO.StreamReader reader = new System.IO.StreamReader(respStream, Encoding.UTF8))
+                if (web_ex.Response != null)
                 {
-                    return reader.ReadToEnd();
+                    respStream = web_ex.Response.GetResponseStream();
+                    using (System.IO.StreamReader reader = new System.IO.StreamReader(respStream, Encoding.UTF8))
+                    {
+                        return reader.ReadToEnd();
+                    }
+                }
+                else
+                {
+                    return web_ex.ToString();
                 }
             }
             catch (System.Exception ex)
             {
-
                 return ex.ToString();
-                //errorMsg = ex.Message;
             }
             finally
             {

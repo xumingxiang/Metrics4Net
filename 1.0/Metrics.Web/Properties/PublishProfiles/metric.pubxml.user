@@ -22,10 +22,16 @@
       <publishTime>07/06/2015 17:22:38</publishTime>
     </File>
     <File Include="bin/Metrics.dll">
-      <publishTime>12/25/2015 14:44:24</publishTime>
+      <publishTime>03/14/2016 18:36:46</publishTime>
+    </File>
+    <File Include="bin/Metrics.pdb">
+      <publishTime>03/14/2016 18:36:46</publishTime>
     </File>
     <File Include="bin/Metrics.Web.dll">
-      <publishTime>12/25/2015 14:44:24</publishTime>
+      <publishTime>03/14/2016 18:36:46</publishTime>
+    </File>
+    <File Include="bin/Metrics.Web.pdb">
+      <publishTime>03/14/2016 18:36:46</publishTime>
     </File>
     <File Include="Dashboard/css/bootstrap.min.css">
       <publishTime>07/06/2015 17:22:38</publishTime>
